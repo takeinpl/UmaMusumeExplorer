@@ -27,9 +27,9 @@ namespace PlayerCli
             if (!directRead)
             {
                 // Should be the same for all users.
-                string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
-                string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
-                string metaFile = Path.Combine(umaMusumeDirectory, "meta");
+                string localLow = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                string umaMusumeDirectory = Path.Combine(localLow, "kakaogames", "umamusume");
+                string metaFile = Path.Combine(umaMusumeDirectory, "client", "meta");
 
                 // UmaMusume meta file is just an SQLite database.
                 SQLiteConnection connection = new(metaFile);
