@@ -12,11 +12,11 @@ namespace Extractor
         {
             if (args.Length >= 1)
             {
-                string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "LocalLow");
-                string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+                string localLow = Path.Combine(Environment.GetFolderPath(Environment.SystemDirectory), "kakaogames");
+                string umaMusumeDirectory = Path.Combine(localLow, "umamusume", "client");
 
-                SQLiteConnection connection = new(Path.Combine(umaMusumeDirectory, "meta"));
-                string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
+                SQLiteConnection connection = new(Path.Combine(umaMusumeDirectory, "Assets", "meta"));
+                string dataDirectory = Path.Combine(umaMusumeDirectory, "Assets", "dat");
                 string outputDirectory = args[0];
 
                 var realFiles = Directory.GetFiles(dataDirectory, "*", SearchOption.AllDirectories).ToList();
