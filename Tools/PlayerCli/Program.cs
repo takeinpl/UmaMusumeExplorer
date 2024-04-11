@@ -28,7 +28,7 @@ namespace PlayerCli
             {
                 // Should be the same for all users.
                 string localLow = Path.Combine(Environment.GetFolderPath(Environment.SystemDirectory) + "kakaogames");
-                string umaMusumeDirectory = Path.Combine(localLow, "umamusume");
+                string umaMusumeDirectory = Path.Combine(localLow, "umamusume", "client");
                 string metaFile = Path.Combine(umaMusumeDirectory, "Assets", "meta");
 
                 // UmaMusume meta file is just an SQLite database.
