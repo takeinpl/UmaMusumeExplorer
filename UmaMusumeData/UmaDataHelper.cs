@@ -9,8 +9,8 @@ namespace UmaMusumeData
     public static class UmaDataHelper
     {
         private static readonly string localLow = Path.Combine(Environment.GetPathRoot(Environment.SystemDirectory) + "kakaogames");
-        private static readonly string umaMusumeDirectory = Path.Combine(localLow, "umamusume", "client");
-        private static readonly string dataDirectory = Path.Combine(umaMusumeDirectory, "Assets", "dat");
+        private static readonly string umaMusumeDirectory = Path.Combine(localLow, "umamusume", "client", "Assets");
+        private static readonly string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
         private static readonly string metaFile = Path.Combine(umaMusumeDirectory, "meta");
         private static readonly string masterFile = Path.Combine(umaMusumeDirectory, "master", "master.mdb");
 
