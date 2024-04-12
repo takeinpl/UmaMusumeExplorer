@@ -27,7 +27,7 @@ namespace PlayerCli
             if (!directRead)
             {
                 // Should be the same for all users.
-                string localLow = Path.Combine(Environment.GetFolderPath(Environment.SystemDirectory) + "kakaogames");
+                string localLow = Path.Combine(Environment.GetPathRoot(Environment.SystemDirectory) + "kakaogames");
                 string umaMusumeDirectory = Path.Combine(localLow, "umamusume", "client");
                 string metaFile = Path.Combine(umaMusumeDirectory, "Assets", "meta");
 
