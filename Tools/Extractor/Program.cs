@@ -12,7 +12,7 @@ namespace Extractor
         {
             if (args.Length >= 1)
             {
-                string localLow = Path.Combine(Environment.GetFolderPath(Environment.SystemDirectory), "kakaogames");
+                string localLow = Path.Combine(Environment.GetPathRoot(Environment.SystemDirectory), "kakaogames");
                 string umaMusumeDirectory = Path.Combine(localLow, "umamusume", "client");
 
                 SQLiteConnection connection = new(Path.Combine(umaMusumeDirectory, "Assets", "meta"));
