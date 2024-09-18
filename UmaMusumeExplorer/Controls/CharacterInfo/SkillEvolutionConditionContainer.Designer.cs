@@ -41,7 +41,7 @@
             conditionNumberLabel.Name = "conditionNumberLabel";
             conditionNumberLabel.Size = new System.Drawing.Size(99, 15);
             conditionNumberLabel.TabIndex = 0;
-            conditionNumberLabel.Text = "Condition 0";
+            conditionNumberLabel.Text = "조건 0";
             conditionNumberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // conditionDescription
@@ -52,7 +52,7 @@
             conditionDescription.Name = "conditionDescription";
             conditionDescription.Size = new System.Drawing.Size(210, 15);
             conditionDescription.TabIndex = 0;
-            conditionDescription.Text = "Satisfy one of the following conditions";
+            conditionDescription.Text = "아래 내용 중 하나의 조건을 만족한다";
             // 
             // conditionsPanel
             // 
