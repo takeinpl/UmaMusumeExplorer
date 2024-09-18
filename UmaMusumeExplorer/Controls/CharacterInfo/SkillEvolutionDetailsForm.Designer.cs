@@ -66,7 +66,7 @@
             toEvolveHintLabel.Name = "toEvolveHintLabel";
             toEvolveHintLabel.Size = new System.Drawing.Size(56, 15);
             toEvolveHintLabel.TabIndex = 1;
-            toEvolveHintLabel.Text = "To evolve";
+            toEvolveHintLabel.Text = "진화할 스킬";
             // 
             // evolvedHintLabel
             // 
@@ -76,7 +76,7 @@
             evolvedHintLabel.Name = "evolvedHintLabel";
             evolvedHintLabel.Size = new System.Drawing.Size(48, 15);
             evolvedHintLabel.TabIndex = 1;
-            evolvedHintLabel.Text = "Evolved";
+            evolvedHintLabel.Text = "진화 스킬";
             // 
             // closeButton
             // 
@@ -96,7 +96,7 @@
             evolveConditionsHintLabel.Name = "evolveConditionsHintLabel";
             evolveConditionsHintLabel.Size = new System.Drawing.Size(102, 15);
             evolveConditionsHintLabel.TabIndex = 1;
-            evolveConditionsHintLabel.Text = "Evolve Conditions";
+            evolveConditionsHintLabel.Text = "진화 조건";
             // 
             // evolveConditionsPanel
             // 
