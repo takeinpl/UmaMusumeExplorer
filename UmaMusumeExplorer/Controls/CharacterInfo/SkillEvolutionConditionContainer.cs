@@ -15,7 +15,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
 
             SkillUpgradeCondition firstCondition = upgradeConditions.First();
 
-            conditionNumberLabel.Text = $"Condition {firstCondition.Num}";
+            conditionNumberLabel.Text = $"조건 {firstCondition.Num}";
             conditions = upgradeConditions;
 
             defaultHeight = conditionNumberLabel.Top + conditionNumberLabel.Height + conditionNumberLabel.Margin.Vertical;
