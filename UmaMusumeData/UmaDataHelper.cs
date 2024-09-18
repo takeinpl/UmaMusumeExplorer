@@ -14,6 +14,8 @@ namespace UmaMusumeData
         private static readonly string metaFile = Path.Combine(umaMusumeDirectory, "meta");
         private static readonly string masterFile = Path.Combine(umaMusumeDirectory, "master", "master.mdb");
 
+        private static List<ManifestEntry>? manifestEntries;
+
         public static string GetPath(ManifestEntry? entry)
         {
             if (entry is not null)
@@ -35,18 +37,25 @@ namespace UmaMusumeData
             else return "";
         }
 
-        public static List<ManifestEntry> GetManifestEntryDataRows(Func<ManifestEntry, bool>? condition = null)
-            => GetRows(metaFile, condition);
+        public static List<ManifestEntry> GetManifestEntries(Func<ManifestEntry, bool>? condition = null)
+        {
+            manifestEntries ??= GetRows<ManifestEntry>(metaFile);
+
+            if (condition is not null)
+                return manifestEntries.Where(condition).ToList();
+            else
+                return manifestEntries;
+        }
 
         public static List<T> GetMasterDatabaseRows<T>(Func<T, bool>? condition = null) where T : new()
             => GetRows(masterFile, condition);
 
         private static List<T> GetRows<T>(string databaseFile, Func<T, bool>? condition = null) where T : new()
         {
-            SQLiteConnection connection = new(databaseFile);
-
             try
             {
+                SQLiteConnection connection = new(databaseFile, SQLiteOpenFlags.ReadOnly);
+
                 List<T> rows;
                 if (condition is not null)
                     rows = connection.Table<T>().Where(condition).ToList();
