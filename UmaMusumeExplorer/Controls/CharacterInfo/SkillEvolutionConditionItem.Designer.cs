@@ -39,7 +39,7 @@
             conditionLabel.Name = "conditionLabel";
             conditionLabel.Size = new System.Drawing.Size(60, 15);
             conditionLabel.TabIndex = 2;
-            conditionLabel.Text = "Condition";
+            conditionLabel.Text = "조건";
             // 
             // SkillEvolutionConditionSingle
             // 
