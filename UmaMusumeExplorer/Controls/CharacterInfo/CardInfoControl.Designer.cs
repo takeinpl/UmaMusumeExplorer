@@ -184,7 +184,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             skillsLabel.Name = "skillsLabel";
             skillsLabel.Size = new System.Drawing.Size(33, 15);
             skillsLabel.TabIndex = 13;
-            skillsLabel.Text = "Skills";
+            skillsLabel.Text = "스킬";
             // 
             // nameLabel
             // 
@@ -206,7 +206,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             growthRateLabel.Name = "growthRateLabel";
             growthRateLabel.Size = new System.Drawing.Size(69, 15);
             growthRateLabel.TabIndex = 11;
-            growthRateLabel.Text = "Growth rate";
+            growthRateLabel.Text = "성장률";
             // 
             // cvNameLabel
             // 
@@ -507,7 +507,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             costumeHintLabel.Name = "costumeHintLabel";
             costumeHintLabel.Size = new System.Drawing.Size(55, 15);
             costumeHintLabel.TabIndex = 3;
-            costumeHintLabel.Text = "Costume";
+            costumeHintLabel.Text = "의상";
             // 
             // statsTablePanel
             // 
@@ -560,7 +560,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             speedHintLabel.Name = "speedHintLabel";
             speedHintLabel.Size = new System.Drawing.Size(39, 15);
             speedHintLabel.TabIndex = 0;
-            speedHintLabel.Text = "Speed";
+            speedHintLabel.Text = "스피드";
             // 
             // staminaHintLabel
             // 
@@ -571,7 +571,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             staminaHintLabel.Name = "staminaHintLabel";
             staminaHintLabel.Size = new System.Drawing.Size(50, 15);
             staminaHintLabel.TabIndex = 2;
-            staminaHintLabel.Text = "Stamina";
+            staminaHintLabel.Text = "스태미나";
             // 
             // powerHintLabel
             // 
@@ -582,7 +582,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             powerHintLabel.Name = "powerHintLabel";
             powerHintLabel.Size = new System.Drawing.Size(40, 15);
             powerHintLabel.TabIndex = 4;
-            powerHintLabel.Text = "Power";
+            powerHintLabel.Text = "파워";
             // 
             // gutsHintLabel
             // 
@@ -593,7 +593,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             gutsHintLabel.Name = "gutsHintLabel";
             gutsHintLabel.Size = new System.Drawing.Size(31, 15);
             gutsHintLabel.TabIndex = 6;
-            gutsHintLabel.Text = "Guts";
+            gutsHintLabel.Text = "근성";
             // 
             // wisdomHintLabel
             // 
@@ -604,7 +604,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             wisdomHintLabel.Name = "wisdomHintLabel";
             wisdomHintLabel.Size = new System.Drawing.Size(51, 15);
             wisdomHintLabel.TabIndex = 8;
-            wisdomHintLabel.Text = "Wisdom";
+            wisdomHintLabel.Text = "지능";
             // 
             // staminaStatusDisplayLabel
             // 
@@ -677,7 +677,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             rarityHintLabel.Name = "rarityHintLabel";
             rarityHintLabel.Size = new System.Drawing.Size(37, 15);
             rarityHintLabel.TabIndex = 5;
-            rarityHintLabel.Text = "Rarity";
+            rarityHintLabel.Text = "★수";
             // 
             // levelHintLabel
             // 
@@ -687,7 +687,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             levelHintLabel.Name = "levelHintLabel";
             levelHintLabel.Size = new System.Drawing.Size(34, 15);
             levelHintLabel.TabIndex = 7;
-            levelHintLabel.Text = "Level";
+            levelHintLabel.Text = "각성Lv";
             // 
             // levelComboBox
             // 
