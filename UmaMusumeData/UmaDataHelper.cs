@@ -8,8 +8,8 @@ namespace UmaMusumeData
 {
     public static class UmaDataHelper
     {
-        private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
-        private static string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+        private static readonly string localLow = Path.Combine("C://", "kakaogames", "umamusume");
+        private static string umaMusumeDirectory = Path.Combine(localLow, "client", "Assets");
 
         private static List<ManifestEntry>? manifestEntries;
 

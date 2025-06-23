@@ -53,7 +53,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             shortVersionRadioButton.Size = new System.Drawing.Size(94, 19);
             shortVersionRadioButton.TabIndex = 1;
             shortVersionRadioButton.TabStop = true;
-            shortVersionRadioButton.Text = "Short version";
+            shortVersionRadioButton.Text = "Short 버전";
             shortVersionRadioButton.UseVisualStyleBackColor = true;
             shortVersionRadioButton.CheckedChanged += RadioBuiton_CheckedChanegd;
             // 
@@ -65,7 +65,7 @@ namespace UmaMusumeExplorer.Controls.Jukebox
             gameSizeVersionRadioButton.Size = new System.Drawing.Size(121, 19);
             gameSizeVersionRadioButton.TabIndex = 2;
             gameSizeVersionRadioButton.TabStop = true;
-            gameSizeVersionRadioButton.Text = "Game-size version";
+            gameSizeVersionRadioButton.Text = "Game-size 버전";
             gameSizeVersionRadioButton.UseVisualStyleBackColor = true;
             gameSizeVersionRadioButton.CheckedChanged += RadioBuiton_CheckedChanegd;
             // 

@@ -12,8 +12,8 @@ namespace Extractor
         {
             if (args.Length >= 1)
             {
-                string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AppData", "LocalLow");
-                string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+                string localLow = Path.Combine("C://", "kakaogames", "umamusume");
+                string umaMusumeDirectory = Path.Combine(localLow, "client", "Assets");
 
                 SQLiteConnection connection = new(Path.Combine(umaMusumeDirectory, "meta"));
                 string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
@@ -65,5 +65,9 @@ namespace Extractor
                 Task.WaitAll(copyTasks);
             }
         }
+    }
+
+    internal class SQLiteConnection
+    {
     }
 }

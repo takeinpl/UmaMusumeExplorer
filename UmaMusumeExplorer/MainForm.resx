@@ -161,7 +161,7 @@
     <value>4</value>
   </data>
   <data name="fileBrowserTabPage.Text" xml:space="preserve">
-    <value>File Browser</value>
+    <value>파일 탐색기</value>
   </data>
   <data name="&gt;&gt;fileBrowserTabPage.Name" xml:space="preserve">
     <value>fileBrowserTabPage</value>
@@ -215,7 +215,7 @@
     <value>2</value>
   </data>
   <data name="audioPlayerTabPage.Text" xml:space="preserve">
-    <value>Audio Player</value>
+    <value>오디오 플레이어</value>
   </data>
   <data name="&gt;&gt;audioPlayerTabPage.Name" xml:space="preserve">
     <value>audioPlayerTabPage</value>
@@ -263,7 +263,7 @@
     <value>5</value>
   </data>
   <data name="liveMusicPlayerTabPage.Text" xml:space="preserve">
-    <value>Live Music Player</value>
+    <value>라이브 플레이어</value>
   </data>
   <data name="&gt;&gt;liveMusicPlayerTabPage.Name" xml:space="preserve">
     <value>liveMusicPlayerTabPage</value>
@@ -311,7 +311,7 @@
     <value>6</value>
   </data>
   <data name="jukeboxTabPage.Text" xml:space="preserve">
-    <value>Jukebox</value>
+    <value>주크박스</value>
   </data>
   <data name="&gt;&gt;jukeboxTabPage.Name" xml:space="preserve">
     <value>jukeboxTabPage</value>
@@ -359,7 +359,7 @@
     <value>3</value>
   </data>
   <data name="characterInfoTabPage.Text" xml:space="preserve">
-    <value>Character Info</value>
+    <value>우마무스메 정보</value>
   </data>
   <data name="&gt;&gt;characterInfoTabPage.Name" xml:space="preserve">
     <value>characterInfoTabPage</value>
@@ -407,7 +407,7 @@
     <value>7</value>
   </data>
   <data name="supportCardsTabPage.Text" xml:space="preserve">
-    <value>Support Cards</value>
+    <value>서포트 카드</value>
   </data>
   <data name="&gt;&gt;supportCardsTabPage.Name" xml:space="preserve">
     <value>supportCardsTabPage</value>
@@ -461,7 +461,7 @@
     <value>1</value>
   </data>
   <data name="raceMusicTabPage.Text" xml:space="preserve">
-    <value>Race Music Player</value>
+    <value>레이스 음악 플레이어</value>
   </data>
   <data name="&gt;&gt;raceMusicTabPage.Name" xml:space="preserve">
     <value>raceMusicTabPage</value>

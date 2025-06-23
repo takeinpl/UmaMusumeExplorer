@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             songItemsPanel = new Common.SongItemsPanel();
-            linkLabelDownload = new LinkLabel();
+            // linkLabelDownload = new LinkLabel(); // korean(kakao) server client not require yet
             SuspendLayout();
             // 
             // songItemsPanel
@@ -44,6 +44,7 @@
             // 
             // linkLabelDownload
             // 
+            /*
             linkLabelDownload.AutoSize = true;
             linkLabelDownload.Location = new Point(3, 0);
             linkLabelDownload.Name = "linkLabelDownload";
@@ -52,6 +53,7 @@
             linkLabelDownload.TabStop = true;
             linkLabelDownload.Text = "Live audio data download";
             linkLabelDownload.LinkClicked += LinkLabelDownload_LinkClicked;
+            */
             // 
             // LiveMusicPlayerControl
             // 

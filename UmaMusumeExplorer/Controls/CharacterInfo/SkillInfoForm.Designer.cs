@@ -90,7 +90,7 @@
             skillPointHint.Name = "skillPointHint";
             skillPointHint.Size = new Size(63, 21);
             skillPointHint.TabIndex = 2;
-            skillPointHint.Text = "Skill Pt";
+            skillPointHint.Text = "스킬 Pt";
             skillPointHint.TextAlign = ContentAlignment.MiddleLeft;
             skillPointHint.Visible = false;
             // 
@@ -111,7 +111,7 @@
             evolutionButton.Name = "evolutionButton";
             evolutionButton.Size = new Size(96, 23);
             evolutionButton.TabIndex = 4;
-            evolutionButton.Text = "Evolution";
+            evolutionButton.Text = "진화";
             evolutionButton.UseVisualStyleBackColor = true;
             evolutionButton.Visible = false;
             // 

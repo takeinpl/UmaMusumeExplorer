@@ -259,7 +259,7 @@
     <value>7</value>
   </data>
   <data name="playButton.Text" xml:space="preserve">
-    <value>Toggle Play</value>
+    <value>재생/일시정지</value>
   </data>
   <data name="&gt;&gt;playButton.Name" xml:space="preserve">
     <value>playButton</value>
@@ -289,7 +289,7 @@
     <value>8</value>
   </data>
   <data name="stopButton.Text" xml:space="preserve">
-    <value>Stop</value>
+    <value>정지</value>
   </data>
   <data name="&gt;&gt;stopButton.Name" xml:space="preserve">
     <value>stopButton</value>
@@ -319,7 +319,7 @@
     <value>6</value>
   </data>
   <data name="setupButton.Text" xml:space="preserve">
-    <value>Setup</value>
+    <value>설정</value>
   </data>
   <data name="&gt;&gt;setupButton.Name" xml:space="preserve">
     <value>setupButton</value>
@@ -493,7 +493,7 @@
     <value>11</value>
   </data>
   <data name="expandButton.Text" xml:space="preserve">
-    <value>Expand / Collapse</value>
+    <value>확장 / 축소</value>
   </data>
   <data name="&gt;&gt;expandButton.Name" xml:space="preserve">
     <value>expandButton</value>
@@ -589,7 +589,7 @@
     <value>15</value>
   </data>
   <data name="customVoiceControlCheckBox.Text" xml:space="preserve">
-    <value>Custom Voice Control</value>
+    <value>맞춤 음성 제어</value>
   </data>
   <data name="customVoiceControlCheckBox.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -625,7 +625,7 @@
     <value>15</value>
   </data>
   <data name="muteBgmCheckBox.Text" xml:space="preserve">
-    <value>Mute BGM</value>
+    <value>BGM 음소거</value>
   </data>
   <data name="muteBgmCheckBox.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -655,7 +655,7 @@
     <value>16</value>
   </data>
   <data name="exportButton.Text" xml:space="preserve">
-    <value>Export</value>
+    <value>내보내기</value>
   </data>
   <data name="&gt;&gt;exportButton.Name" xml:space="preserve">
     <value>exportButton</value>
@@ -685,7 +685,7 @@
     <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Live Music Player</value>
+    <value>라이브 플레이어</value>
   </data>
   <data name="&gt;&gt;updateTimer.Name" xml:space="preserve">
     <value>updateTimer</value>

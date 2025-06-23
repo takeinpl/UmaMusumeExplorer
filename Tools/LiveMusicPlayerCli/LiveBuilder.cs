@@ -31,7 +31,7 @@ namespace LiveMusicPlayerCli
 
             StreamReader? partCsv = GetLiveCsv(musicId, "part");
             if (partCsv is null)
-                throw new Exception("Unable to read live part data.");
+                throw new Exception("라이브 파트의 데이터를 읽어올 수 없습니다."); // Unable to read live part data.
             bool hasVolumeRate = partCsv.ReadLine()?.Contains("volume_rate") ?? false;
             while (!partCsv.EndOfStream)
             {

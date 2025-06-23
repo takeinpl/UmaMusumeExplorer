@@ -8,8 +8,8 @@ namespace UmaMusumeExplorer.Controls.LiveMusicPlayer
 {
     public partial class DownloadWorkaroundForm : Form
     {
-        private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
-        private static readonly string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+        private static readonly string localLow = Path.Combine("C://", "kakaogames", "umamusume");
+        private static readonly string umaMusumeDirectory = Path.Combine(localLow, "client", "Assets");
         private static readonly string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
         private static readonly string metaFile = Path.Combine(umaMusumeDirectory, "meta");
         private static readonly string metaFileBackup = metaFile + ".bak";

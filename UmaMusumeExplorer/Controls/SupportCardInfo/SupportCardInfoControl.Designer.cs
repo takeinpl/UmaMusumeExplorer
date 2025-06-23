@@ -50,7 +50,7 @@
             markLimitedCheckBox.Name = "markLimitedCheckBox";
             markLimitedCheckBox.Size = new Size(123, 19);
             markLimitedCheckBox.TabIndex = 1;
-            markLimitedCheckBox.Text = "Mark special cards";
+            markLimitedCheckBox.Text = "특수 카드 표시";
             markLimitedCheckBox.UseVisualStyleBackColor = true;
             markLimitedCheckBox.CheckedChanged += MarkLimitedCheckBox_CheckedChanged;
             // 

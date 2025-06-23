@@ -184,7 +184,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             skillsLabel.Name = "skillsLabel";
             skillsLabel.Size = new Size(33, 15);
             skillsLabel.TabIndex = 13;
-            skillsLabel.Text = "Skills";
+            skillsLabel.Text = "스킬";
             // 
             // nameLabel
             // 
@@ -206,7 +206,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             growthRateLabel.Name = "growthRateLabel";
             growthRateLabel.Size = new Size(69, 15);
             growthRateLabel.TabIndex = 11;
-            growthRateLabel.Text = "Growth rate";
+            growthRateLabel.Text = "성장률";
             // 
             // cvNameLabel
             // 
@@ -261,7 +261,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             driveInRankedLabel.Rank = Rank.Unknown;
             driveInRankedLabel.Size = new Size(109, 30);
             driveInRankedLabel.TabIndex = 12;
-            driveInRankedLabel.Text = "Drive-in";
+            driveInRankedLabel.Text = "추입";
             // 
             // dirtRankedLabel
             // 
@@ -273,7 +273,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             dirtRankedLabel.Rank = Rank.Unknown;
             dirtRankedLabel.Size = new Size(106, 29);
             dirtRankedLabel.TabIndex = 2;
-            dirtRankedLabel.Text = "Dirt";
+            dirtRankedLabel.Text = "더트";
             // 
             // turfRankedLabel
             // 
@@ -285,7 +285,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             turfRankedLabel.Rank = Rank.Unknown;
             turfRankedLabel.Size = new Size(106, 29);
             turfRankedLabel.TabIndex = 1;
-            turfRankedLabel.Text = "Turf";
+            turfRankedLabel.Text = "잔디";
             // 
             // fieldAptitudeLabel
             // 
@@ -296,7 +296,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             fieldAptitudeLabel.Name = "fieldAptitudeLabel";
             fieldAptitudeLabel.Size = new Size(79, 15);
             fieldAptitudeLabel.TabIndex = 0;
-            fieldAptitudeLabel.Text = "Field aptitude";
+            fieldAptitudeLabel.Text = "경기장 적성";
             // 
             // distanceAptitudeLabel
             // 
@@ -307,7 +307,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             distanceAptitudeLabel.Name = "distanceAptitudeLabel";
             distanceAptitudeLabel.Size = new Size(99, 15);
             distanceAptitudeLabel.TabIndex = 3;
-            distanceAptitudeLabel.Text = "Distance aptitude";
+            distanceAptitudeLabel.Text = "거리 적성";
             // 
             // runningStyleAptitudeLabel
             // 
@@ -318,7 +318,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             runningStyleAptitudeLabel.Name = "runningStyleAptitudeLabel";
             runningStyleAptitudeLabel.Size = new Size(82, 30);
             runningStyleAptitudeLabel.TabIndex = 8;
-            runningStyleAptitudeLabel.Text = "Running style aptitude";
+            runningStyleAptitudeLabel.Text = "각질 적성";
             // 
             // shortRankedLabel
             // 
@@ -330,7 +330,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             shortRankedLabel.Rank = Rank.Unknown;
             shortRankedLabel.Size = new Size(106, 29);
             shortRankedLabel.TabIndex = 4;
-            shortRankedLabel.Text = "Short";
+            shortRankedLabel.Text = "단거리";
             // 
             // mileRankedLabel
             // 
@@ -342,7 +342,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             mileRankedLabel.Rank = Rank.Unknown;
             mileRankedLabel.Size = new Size(106, 29);
             mileRankedLabel.TabIndex = 5;
-            mileRankedLabel.Text = "Mile";
+            mileRankedLabel.Text = "마일";
             // 
             // middleRankedLabel
             // 
@@ -354,7 +354,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             middleRankedLabel.Rank = Rank.Unknown;
             middleRankedLabel.Size = new Size(106, 29);
             middleRankedLabel.TabIndex = 6;
-            middleRankedLabel.Text = "Middle";
+            middleRankedLabel.Text = "중거리";
             // 
             // longRankedLabel
             // 
@@ -366,7 +366,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             longRankedLabel.Rank = Rank.Unknown;
             longRankedLabel.Size = new Size(109, 29);
             longRankedLabel.TabIndex = 7;
-            longRankedLabel.Text = "Long";
+            longRankedLabel.Text = "장거리";
             // 
             // escapeRankedLabel
             // 
@@ -378,7 +378,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             escapeRankedLabel.Rank = Rank.Unknown;
             escapeRankedLabel.Size = new Size(106, 30);
             escapeRankedLabel.TabIndex = 9;
-            escapeRankedLabel.Text = "Escape";
+            escapeRankedLabel.Text = "도주";
             // 
             // leadingRankedLabel
             // 
@@ -390,7 +390,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             leadingRankedLabel.Rank = Rank.Unknown;
             leadingRankedLabel.Size = new Size(106, 30);
             leadingRankedLabel.TabIndex = 10;
-            leadingRankedLabel.Text = "Leading";
+            leadingRankedLabel.Text = "선행";
             // 
             // insertRankedLabel
             // 
@@ -402,7 +402,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             insertRankedLabel.Rank = Rank.Unknown;
             insertRankedLabel.Size = new Size(106, 30);
             insertRankedLabel.TabIndex = 11;
-            insertRankedLabel.Text = "Insert";
+            insertRankedLabel.Text = "선입";
             // 
             // costumeComboBox
             // 
@@ -507,7 +507,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             costumeHintLabel.Name = "costumeHintLabel";
             costumeHintLabel.Size = new Size(55, 15);
             costumeHintLabel.TabIndex = 3;
-            costumeHintLabel.Text = "Costume";
+            costumeHintLabel.Text = "의상";
             // 
             // statsTablePanel
             // 
@@ -560,7 +560,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             speedHintLabel.Name = "speedHintLabel";
             speedHintLabel.Size = new Size(39, 15);
             speedHintLabel.TabIndex = 0;
-            speedHintLabel.Text = "Speed";
+            speedHintLabel.Text = "스피드";
             // 
             // staminaHintLabel
             // 
@@ -571,7 +571,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             staminaHintLabel.Name = "staminaHintLabel";
             staminaHintLabel.Size = new Size(50, 15);
             staminaHintLabel.TabIndex = 2;
-            staminaHintLabel.Text = "Stamina";
+            staminaHintLabel.Text = "스테미나";
             // 
             // powerHintLabel
             // 
@@ -582,7 +582,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             powerHintLabel.Name = "powerHintLabel";
             powerHintLabel.Size = new Size(40, 15);
             powerHintLabel.TabIndex = 4;
-            powerHintLabel.Text = "Power";
+            powerHintLabel.Text = "파워";
             // 
             // gutsHintLabel
             // 
@@ -593,7 +593,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             gutsHintLabel.Name = "gutsHintLabel";
             gutsHintLabel.Size = new Size(31, 15);
             gutsHintLabel.TabIndex = 6;
-            gutsHintLabel.Text = "Guts";
+            gutsHintLabel.Text = "근성";
             // 
             // wisdomHintLabel
             // 
@@ -604,7 +604,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             wisdomHintLabel.Name = "wisdomHintLabel";
             wisdomHintLabel.Size = new Size(51, 15);
             wisdomHintLabel.TabIndex = 8;
-            wisdomHintLabel.Text = "Wisdom";
+            wisdomHintLabel.Text = "지능";
             // 
             // staminaStatusDisplayLabel
             // 
@@ -677,7 +677,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             rarityHintLabel.Name = "rarityHintLabel";
             rarityHintLabel.Size = new Size(37, 15);
             rarityHintLabel.TabIndex = 5;
-            rarityHintLabel.Text = "Rarity";
+            rarityHintLabel.Text = "등급";
             // 
             // levelHintLabel
             // 
@@ -687,7 +687,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             levelHintLabel.Name = "levelHintLabel";
             levelHintLabel.Size = new Size(34, 15);
             levelHintLabel.TabIndex = 7;
-            levelHintLabel.Text = "Level";
+            levelHintLabel.Text = "각성Lv";
             // 
             // levelComboBox
             // 
