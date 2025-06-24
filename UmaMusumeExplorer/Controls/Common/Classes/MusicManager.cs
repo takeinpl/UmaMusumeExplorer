@@ -45,7 +45,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         public bool SetupLive(Control parent)
         {
             // Load music score before everything else
-            if (!LoadMusicScore()) return ShowMissingResources("a");
+            if (!LoadMusicScore() && musicId is not 1028) return ShowMissingResources("a");
 
             // Get possible audio assets for music ID
             IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"sound/l/{musicId:d4}"));
