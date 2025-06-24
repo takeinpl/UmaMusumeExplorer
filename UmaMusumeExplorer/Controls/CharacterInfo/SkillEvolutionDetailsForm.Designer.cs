@@ -84,7 +84,7 @@
             closeButton.Name = "closeButton";
             closeButton.Size = new System.Drawing.Size(75, 23);
             closeButton.TabIndex = 2;
-            closeButton.Text = "Close";
+            closeButton.Text = "닫기";
             closeButton.UseVisualStyleBackColor = true;
             closeButton.Click += CloseButton_Click;
             // 

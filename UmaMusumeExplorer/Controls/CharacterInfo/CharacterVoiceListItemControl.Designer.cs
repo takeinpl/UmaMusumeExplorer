@@ -41,7 +41,7 @@
             playButton.Name = "playButton";
             playButton.Size = new System.Drawing.Size(45, 45);
             playButton.TabIndex = 1;
-            playButton.Text = "Play";
+            playButton.Text = "재생";
             playButton.UseVisualStyleBackColor = true;
             // 
             // idLabel

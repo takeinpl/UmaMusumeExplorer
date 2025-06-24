@@ -56,7 +56,7 @@
             costumeHintLabel.Name = "costumeHintLabel";
             costumeHintLabel.Size = new Size(55, 15);
             costumeHintLabel.TabIndex = 2;
-            costumeHintLabel.Text = "Costume";
+            costumeHintLabel.Text = "의상";
             // 
             // costumeComboBox
             // 
@@ -76,7 +76,7 @@
             categoryHintLabel.Name = "categoryHintLabel";
             categoryHintLabel.Size = new Size(55, 15);
             categoryHintLabel.TabIndex = 2;
-            categoryHintLabel.Text = "Category";
+            categoryHintLabel.Text = "카테고리";
             // 
             // categoryComboBox
             // 
@@ -96,7 +96,7 @@
             exportAllButton.Name = "exportAllButton";
             exportAllButton.Size = new Size(114, 27);
             exportAllButton.TabIndex = 4;
-            exportAllButton.Text = "Export all";
+            exportAllButton.Text = "전부 내보내기";
             exportAllButton.UseVisualStyleBackColor = true;
             exportAllButton.Click += ExportAllButton_Click;
             // 
@@ -107,7 +107,7 @@
             exportSelectedButton.Name = "exportSelectedButton";
             exportSelectedButton.Size = new Size(114, 27);
             exportSelectedButton.TabIndex = 4;
-            exportSelectedButton.Text = "Export selected";
+            exportSelectedButton.Text = "내보내기";
             exportSelectedButton.UseVisualStyleBackColor = true;
             exportSelectedButton.Click += ExportSelectedButton_Click;
             // 

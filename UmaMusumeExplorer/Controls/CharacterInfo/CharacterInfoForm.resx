@@ -152,7 +152,7 @@
     <value>0</value>
   </data>
   <data name="characterInfoTabPage.Text" xml:space="preserve">
-    <value>Card Info</value>
+    <value>정보</value>
   </data>
   <data name="&gt;&gt;characterInfoTabPage.Name" xml:space="preserve">
     <value>characterInfoTabPage</value>
@@ -191,7 +191,7 @@
     <value>2</value>
   </data>
   <data name="voiceLinesTabPage.Text" xml:space="preserve">
-    <value>Voice Lines</value>
+    <value>보이스</value>
   </data>
   <data name="&gt;&gt;voiceLinesTabPage.Name" xml:space="preserve">
     <value>voiceLinesTabPage</value>
@@ -233,7 +233,7 @@
     <value>1</value>
   </data>
   <data name="songsTabPage.Text" xml:space="preserve">
-    <value>Songs</value>
+    <value>라이브</value>
   </data>
   <data name="&gt;&gt;songsTabPage.Name" xml:space="preserve">
     <value>songsTabPage</value>
@@ -272,7 +272,7 @@
     <value>3</value>
   </data>
   <data name="supportCardsTabPage.Text" xml:space="preserve">
-    <value>Support Cards</value>
+    <value>서포트 카드</value>
   </data>
   <data name="&gt;&gt;supportCardsTabPage.Name" xml:space="preserve">
     <value>supportCardsTabPage</value>

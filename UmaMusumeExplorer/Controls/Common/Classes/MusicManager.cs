@@ -45,7 +45,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         public bool SetupLive(Control parent)
         {
             // Load music score before everything else
-            if (!LoadMusicScore()) return ShowMissingResources("a");
+            if (!LoadMusicScore()) return ShowMissingResources();
 
             // Get possible audio assets for music ID
             IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"sound/l/{musicId:d4}"));
@@ -67,7 +67,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             okeAwb ??= GetAwbFile(audioAssetEntries.FirstOrDefault(
                 aa => aa.BaseName == $"snd_bgm_live_{musicId:d4}_oke_{sfx:d2}_{variation:d2}.awb"));
 
-            if (okeAwb is null) return ShowMissingResources("b");
+            if (okeAwb is null) return ShowMissingResources();
 
             // Abort unit setup when character selection is not confirmed
             if (CharacterPositions is null) return false;
@@ -79,7 +79,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             foreach (var characterPosition in CharacterPositions)
             {
                 AwbReader? charaAwb = GetAwbFile(audioAssetEntries.First(aa => aa.BaseName == $"snd_bgm_live_{musicId:d4}_chara_{characterPosition.CharacterId:d4}_01.awb"));
-                if (charaAwb is null) return ShowMissingResources("c");
+                if (charaAwb is null) return ShowMissingResources();
                 charaAwbs[characterPosition.Position] = charaAwb;
             }
 
@@ -135,7 +135,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             // Get BGM without sound effects
             AwbReader? okeAwb = GetAwbFile(audioAssetEntries.First());
 
-            if (okeAwb is null) return ShowMissingResources("d");
+            if (okeAwb is null) return ShowMissingResources();
 
             // Initialize song mixer on first playback
             SampleProvider ??= new ExtendedSampleProvider(new UmaWaveStream(okeAwb, 0));
@@ -276,9 +276,9 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                 return new AwbReader(File.OpenRead(path));
         }
 
-        private static bool ShowMissingResources(string type)
+        private static bool ShowMissingResources()
         {
-            MessageBox.Show($"Missing resources for selected music. Please download all resources in the game. \ntype:{type}", "Missing resources", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show("Missing resources for selected music. Please download all resources in the game.", "Missing resources", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
         }
     }
