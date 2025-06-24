@@ -168,8 +168,8 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         {
             if (musicScoreLoaded) return true;
 
-            IEnumerable<ManifestEntry> musicScoreAssetEntries = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"live/musicscores/m{musicId}"));
-            ManifestEntry? timelineEntry = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"cutt/cutt_son{musicId}/son{musicId}_camera")).FirstOrDefault();
+            IEnumerable<ManifestEntry> musicScoreAssetEntries = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"live/musicscores/m{musicId:d4}"));
+            ManifestEntry? timelineEntry = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"cutt/cutt_son{musicId:d4}/son{musicId:d4}_camera")).FirstOrDefault();
 
             if (!musicScoreAssetEntries.Any()) return false;
             if (timelineEntry is null) return false;
