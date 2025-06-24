@@ -135,7 +135,7 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             // Get BGM without sound effects
             AwbReader? okeAwb = GetAwbFile(audioAssetEntries.First());
 
-            if (okeAwb is null) return ShowMissingResources();
+            if (okeAwb is null) return ShowMissingResources("d");
 
             // Initialize song mixer on first playback
             SampleProvider ??= new ExtendedSampleProvider(new UmaWaveStream(okeAwb, 0));
