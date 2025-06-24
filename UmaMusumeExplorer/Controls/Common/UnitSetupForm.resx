@@ -181,7 +181,7 @@
     <value>1</value>
   </data>
   <data name="confirmButton.Text" xml:space="preserve">
-    <value>Confirm</value>
+    <value>확인</value>
   </data>
   <data name="&gt;&gt;confirmButton.Name" xml:space="preserve">
     <value>confirmButton</value>
@@ -214,7 +214,7 @@
     <value>2</value>
   </data>
   <data name="sfxCheckBox.Text" xml:space="preserve">
-    <value>Enable SFX</value>
+    <value>SFX 활성</value>
   </data>
   <data name="&gt;&gt;sfxCheckBox.Name" xml:space="preserve">
     <value>sfxCheckBox</value>
@@ -281,7 +281,7 @@
     <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Unit Setup</value>
+    <value>맴버 선택</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>UnitSetupForm</value>

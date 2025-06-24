@@ -140,7 +140,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             genderHintLabel.Name = "genderHintLabel";
             genderHintLabel.Size = new Size(65, 21);
             genderHintLabel.TabIndex = 0;
-            genderHintLabel.Text = "Gender";
+            genderHintLabel.Text = "성별";
             // 
             // birthDateHintLabel
             // 
@@ -151,7 +151,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             birthDateHintLabel.Name = "birthDateHintLabel";
             birthDateHintLabel.Size = new Size(85, 21);
             birthDateHintLabel.TabIndex = 2;
-            birthDateHintLabel.Text = "Birth date";
+            birthDateHintLabel.Text = "탄생일";
             // 
             // birthdayLabel
             // 
@@ -162,7 +162,7 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             birthdayLabel.Name = "birthdayLabel";
             birthdayLabel.Size = new Size(78, 21);
             birthdayLabel.TabIndex = 3;
-            birthdayLabel.Text = "??/??/????";
+            birthdayLabel.Text = "????/??/??";
             // 
             // genderLabel
             // 

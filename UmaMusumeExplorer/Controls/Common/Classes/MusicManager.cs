@@ -45,10 +45,10 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
         public bool SetupLive(Control parent)
         {
             // Load music score before everything else
-            if (!LoadMusicScore()) return ShowMissingResources();
+            if (!LoadMusicScore()) return ShowMissingResources("a");
 
             // Get possible audio assets for music ID
-            IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"sound/l/{musicId}"));
+            IEnumerable<ManifestEntry> audioAssetEntries = UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith($"sound/l/{musicId:d4}"));
 
             // Retrieve count of members that actually sing
             int singingMembers = GetSingingMembers();
@@ -60,14 +60,14 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
 
             // Get BGM with or without sound effects
             int sfx = unitSetupForm.Sfx ? 1 : 2;
-            AwbReader? okeAwb = GetAwbFile(audioAssetEntries.FirstOrDefault(aa => aa.BaseName == $"snd_bgm_live_{musicId}_oke_{sfx:d2}.awb"));
+            AwbReader? okeAwb = GetAwbFile(audioAssetEntries.FirstOrDefault(aa => aa.BaseName == $"snd_bgm_live_{musicId:d4}_oke_{sfx:d2}.awb"));
 
             // Legend-Changer has extra variation
             int variation = random.Next(1, 6);
             okeAwb ??= GetAwbFile(audioAssetEntries.FirstOrDefault(
                 aa => aa.BaseName == $"snd_bgm_live_{musicId:d4}_oke_{sfx:d2}_{variation:d2}.awb"));
 
-            if (okeAwb is null) return ShowMissingResources();
+            if (okeAwb is null) return ShowMissingResources("b");
 
             // Abort unit setup when character selection is not confirmed
             if (CharacterPositions is null) return false;
@@ -78,8 +78,8 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
             // Get character parts
             foreach (var characterPosition in CharacterPositions)
             {
-                AwbReader? charaAwb = GetAwbFile(audioAssetEntries.First(aa => aa.BaseName == $"snd_bgm_live_{musicId}_chara_{characterPosition.CharacterId}_01.awb"));
-                if (charaAwb is null) return ShowMissingResources();
+                AwbReader? charaAwb = GetAwbFile(audioAssetEntries.First(aa => aa.BaseName == $"snd_bgm_live_{musicId:d4}_chara_{characterPosition.CharacterId:d4}_01.awb"));
+                if (charaAwb is null) return ShowMissingResources("c");
                 charaAwbs[characterPosition.Position] = charaAwb;
             }
 
@@ -276,9 +276,9 @@ namespace UmaMusumeExplorer.Controls.Common.Classes
                 return new AwbReader(File.OpenRead(path));
         }
 
-        private static bool ShowMissingResources()
+        private static bool ShowMissingResources(string type)
         {
-            MessageBox.Show("Missing resources for selected music. Please download all resources in the game.", "Missing resources", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show($"Missing resources for selected music. Please download all resources in the game. \ntype:{type}", "Missing resources", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
         }
     }

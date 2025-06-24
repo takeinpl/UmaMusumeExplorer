@@ -97,8 +97,8 @@ namespace UmaMusumeExplorer.Controls.CharacterInfo
             else
                 cvNameLabel.ForeColor = Color.White;
 
-            genderLabel.Text = charaData.Sex == 1 ? "Male" : "Female";
-            birthdayLabel.Text = $"{charaData.BirthDay}/{charaData.BirthMonth}/{charaData.BirthYear} ({DateTime.Now.Year - charaData.BirthYear} years)";
+            genderLabel.Text = charaData.Sex == 1 ? "남" : "여";
+            birthdayLabel.Text = $"{charaData.BirthYear}/{charaData.BirthMonth}/{charaData.BirthDay} ({DateTime.Now.Year - charaData.BirthYear}세)";
 
             iconPinnedBitmap = UnityAssets.GetCharaIcon(id);
             iconPictureBox.Image = iconPinnedBitmap?.Bitmap;

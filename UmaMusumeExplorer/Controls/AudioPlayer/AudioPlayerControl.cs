@@ -297,12 +297,12 @@ namespace UmaMusumeExplorer.Controls.AudioPlayer
             if (filterPredicate is null)
             {
                 filterPredicate = ga => ga.Text.Contains(searchBox.Text);
-                filterButton.Text = "Reset";
+                filterButton.Text = "리셋";
             }
             else
             {
                 filterPredicate = null;
-                filterButton.Text = "Filter";
+                filterButton.Text = "검색";
             }
 
             Filter();
