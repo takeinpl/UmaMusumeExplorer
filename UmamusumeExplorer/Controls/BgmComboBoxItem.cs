@@ -2,7 +2,7 @@
 
 namespace UmamusumeExplorer.Controls
 {
-    public class BgmComboBoxItem
+    internal class BgmComboBoxItem
     {
         public RaceBgm? RaceBgm { get; set; }
 

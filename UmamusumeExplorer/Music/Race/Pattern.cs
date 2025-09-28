@@ -1,6 +1,6 @@
 ﻿namespace UmamusumeExplorer.Music.Race
 {
-    public class Pattern
+    internal class Pattern
     {
         public int BgmTime { get; set; }
 

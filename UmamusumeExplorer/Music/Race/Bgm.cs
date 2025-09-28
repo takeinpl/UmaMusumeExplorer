@@ -4,7 +4,7 @@ using UmamsumeData;
 
 namespace UmamusumeExplorer.Music.Race
 {
-    public class Bgm : IDisposable
+    internal class Bgm : IDisposable
     {
         private readonly AwbReader awbReader;
 

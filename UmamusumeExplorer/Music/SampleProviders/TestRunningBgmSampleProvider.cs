@@ -4,7 +4,7 @@ using UmamusumeExplorer.Music.Race;
 
 namespace UmamusumeExplorer.Music.SampleProviders
 {
-    public class TestRunningBgmSampleProvider : ISampleProvider
+    internal class TestRunningBgmSampleProvider : ISampleProvider
     {
         private readonly FadeInOutSampleProvider first;
         private readonly ISampleProvider second;

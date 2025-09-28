@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            iconPictureBox = new UmamusumeExplorer.Controls.HighQualityPictureBox();
+            iconPictureBox = new HighQualityPictureBox();
             skillsTableLayoutPanel = new DoubleBufferedTableLayoutPanel();
             belowNameTablePanel = new DoubleBufferedTableLayoutPanel();
             genderHintLabel = new Label();
@@ -162,7 +162,7 @@
             birthdayLabel.Name = "birthdayLabel";
             birthdayLabel.Size = new Size(78, 21);
             birthdayLabel.TabIndex = 3;
-            birthdayLabel.Text = "??/??/????";
+            birthdayLabel.Text = "????/??/??";
             // 
             // genderLabel
             // 
