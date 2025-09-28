@@ -1,15 +1,19 @@
-﻿using System.ComponentModel;
+﻿using SQLite;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing.Imaging;
 using System.Text;
-using SQLite;
 using UmamsumeData;
 
 namespace UmamusumeExplorer.Controls
 {
     public partial class DownloadWorkaroundForm : Form
     {
+        private const string key = "9c2bab97bcf8c0c4f1a9ea7881a213f6c9ebf9d8d4c6a8e43ce5a259bde7e9fd";
+
         private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
-        private static readonly string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+        private static string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+        private static bool isMetaFileEncrypted = false;
         private static readonly string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
         private static readonly string metaFile = Path.Combine(umaMusumeDirectory, "meta");
         private static readonly string metaFileBackup = metaFile + ".bak";
@@ -20,20 +24,35 @@ namespace UmamusumeExplorer.Controls
         {
             InitializeComponent();
 
+            BinaryReader reader = new(File.OpenRead(metaFile));
+            isMetaFileEncrypted = reader.ReadUInt32() != 0x694C5153;
+
             Task.Run(() =>
             {
                 long totalSize = liveAudioEntries.Sum(s => s.Length);
                 List<ManifestEntry> existingEntries = [.. liveAudioEntries.Where(e => File.Exists(UmaDataHelper.GetPath(e)))];
                 Invoke(() => labelStep2.Text += $" ({GenerateSizeString(totalSize - existingEntries.Sum(e => e.Length))})");
             });
+
+            buttonRevert.Enabled = false;
+
+            if (File.Exists(metaFileBackup))
+            {
+                buttonModifyDatabase.Enabled = false;
+                buttonRevert.Enabled = true;
+            }
         }
 
         private void ButtonModifyDatabase_Click(object sender, EventArgs e)
         {
             if (!File.Exists(metaFileBackup))
-                File.Copy(metaFile, metaFileBackup);
+                File.Copy(metaFile, metaFileBackup, true);
 
             SQLiteConnection connection = new(metaFile, SQLiteOpenFlags.ReadWrite);
+            if (isMetaFileEncrypted)
+            {
+                connection.ExecuteScalar<string>($"pragma hexkey = '{key}';");
+            }
             connection.RunInTransaction(() =>
             {
                 foreach (var item in liveAudioEntries)
@@ -44,7 +63,8 @@ namespace UmamusumeExplorer.Controls
             });
             connection.Close();
 
-            buttonModifyDatabase.Text = "Database modified";
+            buttonModifyDatabase.Enabled = false;
+            buttonRevert.Enabled = true;
         }
 
         private static string GenerateSizeString(long length)
@@ -90,7 +110,7 @@ namespace UmamusumeExplorer.Controls
 
                 Invoke(() =>
                 {
-                    buttonCacheFiles.Text = "Caching live audio resources";
+                    buttonCacheFiles.Text = "Caching live audio resources...";
                     buttonCacheFiles.Enabled = false;
                 });
 
@@ -131,21 +151,11 @@ namespace UmamusumeExplorer.Controls
 
         private void ButtonRevert_Click(object sender, EventArgs e)
         {
-            //File.Delete(metaFile);
-            //File.Move(metaFileBackup, metaFile);
+            File.Delete(metaFile);
+            File.Move(metaFileBackup, metaFile);
 
-            SQLiteConnection connection = new(metaFile, SQLiteOpenFlags.ReadWrite);
-            connection.RunInTransaction(() =>
-            {
-                foreach (var item in liveAudioEntries)
-                {
-                    item.Group = AssetBundleGroup.DeleteOnLogin;
-                }
-                connection.UpdateAll(liveAudioEntries);
-            });
-            connection.Close();
-
-            buttonRevert.Text = "Database reverted";
+            buttonRevert.Enabled = false;
+            buttonModifyDatabase.Enabled = true;
         }
     }
 }
