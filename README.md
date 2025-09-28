@@ -20,6 +20,6 @@ Game data such as stats are not modified in any way, and can be viewed with any 
 
 ## Credits
 
-* [sqlite-net](https://github.com/praeclarum/sqlite-net) for SQLite functionality
+* [sqlite-net](https://github.com/praeclarum/sqlite-net) and [SQLite3MultipleCiphers](https://github.com/utelle/SQLite3MultipleCiphers) for SQLite functionality
 * [vgmstream](https://github.com/vgmstream/vgmstream) for the CRIWARE code
 * [AssetsTools.NET](https://github.com/nesrak1/AssetsTools.NET) for reading Unity assets
