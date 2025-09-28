@@ -13,7 +13,7 @@ namespace UmamusumeExplorer.Controls
         private readonly List<int> allowedCharas = new();
         private readonly List<int> alreadySelected = new();
 
-        public CharacterSelectForm(IEnumerable<LivePermissionData> permissionData, CharacterPosition[] characters)
+        public CharacterSelectForm(IEnumerable<LivePermissionData> permissionData, CharacterPosition[] characters, int currentCharacterId)
         {
             InitializeComponent();
 
@@ -38,6 +38,7 @@ namespace UmamusumeExplorer.Controls
                 {
                     if (charaIcon.Tag as CharaData is not CharaData cd) return;
                     if (alreadySelected.Contains(cd.Id)) charaIcon.BackColor = Color.FromArgb(234, 54, 128);
+                    if (cd.Id == currentCharacterId) charaIcon.BackColor = Color.FromArgb(247, 175, 204);
                 }
             };
             characterItemsPanel.ItemClick += (s, e) =>

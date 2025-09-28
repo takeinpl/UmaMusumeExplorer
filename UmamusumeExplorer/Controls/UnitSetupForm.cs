@@ -90,12 +90,12 @@ namespace UmamusumeExplorer.Controls
 
         public void CharacterPositionPictureBoxClick(object? sender, EventArgs e)
         {
-            if (sender is not PictureBox characterPositionPixtureBox) return;
-            if (characterPositionPixtureBox.Parent is not CharacterPositionControl clickedCharacterPositionControl) return;
+            if (sender is not PictureBox characterPositionPictureBox) return;
+            if (characterPositionPictureBox.Parent is not CharacterPositionControl clickedCharacterPositionControl) return;
 
             int initialCharacter = clickedCharacterPositionControl.CharacterId;
 
-            CharacterSelectForm characterSelectForm = new(livePermissionData, characterPositions);
+            CharacterSelectForm characterSelectForm = new(livePermissionData, characterPositions, clickedCharacterPositionControl.CharacterId);
             ControlHelpers.ShowFormDialogCenter(characterSelectForm, this);
 
             int selectedCharacter = characterSelectForm.SelectedCharacter;
