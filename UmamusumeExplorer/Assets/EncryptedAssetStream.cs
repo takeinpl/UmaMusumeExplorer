@@ -34,6 +34,16 @@ namespace UmamusumeExplorer.Assets
             }
         }
 
+        public override void CopyTo(Stream destination, int bufferSize)
+        {
+            byte[] buffer = new byte[bufferSize];
+            int read;
+            while ((read = Read(buffer, 0, buffer.Length)) != 0)
+            {
+                destination.Write(buffer, 0, read);
+            }
+        }
+
         public override int Read(byte[] buffer, int offset, int count)
         {
             int read = base.Read(buffer, offset, count);
