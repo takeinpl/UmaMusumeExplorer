@@ -12,14 +12,14 @@ namespace UmamusumeExplorer.Pages
 {
     partial class AudioPlayerControl : UserControl
     {
-        private readonly BackgroundWorker trackCountBackgroundWorker = new(); 
+        private readonly BackgroundWorker trackCountBackgroundWorker = new();
 
         private readonly WaveOutEvent waveOut;
         private readonly object waveOutLock = new();
 
         private readonly IEnumerable<ManifestEntry> audioAssetEntries = AssetTables.AudioAssetEntries;
         private char audioType;
-        private IEnumerable<ManifestEntry>? awbOnly;
+        private IEnumerable<ManifestEntry>? acbOnly;
 
         private IEnumerable<ListViewItem>? defaultItems;
         private IEnumerable<ListViewItem>? targetItems;
@@ -59,10 +59,10 @@ namespace UmamusumeExplorer.Pages
                 _ => 'v',
             };
 
-            awbOnly = audioAssetEntries.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".awb"));
-            if (awbOnly is null) return;
+            acbOnly = audioAssetEntries.Where((gf) => gf.Name.StartsWith($"sound/{audioType}/") && gf.BaseName.EndsWith(".acb"));
+            if (acbOnly is null) return;
 
-            totalFiles = awbOnly.Count();
+            totalFiles = acbOnly.Count();
 
             fileListView.Items.Clear();
 
@@ -71,36 +71,36 @@ namespace UmamusumeExplorer.Pages
             audioTypeComboBox.Enabled = false;
             refreshButton.Enabled = false;
 
-
-
             loadingBackgroundWorker.RunWorkerAsync();
         }
 
         private void LoadingBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             if (sender is not BackgroundWorker backgroundWorker) return;
-            if (awbOnly is null) return;
+            if (acbOnly is null) return;
 
             List<ListViewItem> listViewItems = [];
 
             backgroundWorker.ReportProgress(0);
 
             int currentFile = 0;
-            foreach (var gameFile in awbOnly)
+            foreach (var gameFile in acbOnly)
             {
                 string baseName = gameFile.BaseName[0..^4];
-                string acbName = baseName + ".acb";
-                string acbPath = UmaDataHelper.GetPath(AssetTables.AudioAssetEntries.FirstOrDefault((gf) => gf.BaseName == acbName));
-                string awbPath = UmaDataHelper.GetPath(gameFile);
+                string awbName = baseName + ".awb";
+                string acbPath = UmaDataHelper.GetPath(gameFile);
+                string awbPath = UmaDataHelper.GetPath(AssetTables.AudioAssetEntries.FirstOrDefault((gf) => gf.BaseName == awbName));
 
-                if (File.Exists(awbPath) && File.Exists(acbPath))
+                if ((File.Exists(acbPath) && File.Exists(awbPath)) || File.Exists(acbPath))
                 {
-                    AtomAudioSource audioSource = new(baseName, acbPath, awbPath);
+                    AtomAudioSource? audioSource = new(baseName, acbPath, awbPath);
 
-                    string name = gameFile.BaseName;
-
-                    listViewItems.Add(new ListViewItem([baseName, audioSource.TrackCount.ToString()])
-                    { Tag = audioSource });
+                    if (audioSource is not null)
+                    {
+                        string name = gameFile.BaseName;
+                        listViewItems.Add(new ListViewItem([baseName, audioSource.TrackCount.ToString()])
+                        { Tag = audioSource });
+                    }
                 }
 
                 currentFile++;

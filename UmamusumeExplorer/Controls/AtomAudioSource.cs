@@ -7,17 +7,25 @@ namespace UmamusumeExplorer.Controls
         private readonly string acb;
         private readonly string awb;
 
-        private readonly AwbReader awbReader;
-
         public AtomAudioSource(string name, string acbPath, string awbPath)
         {
             Name = name;
             acb = acbPath;
             awb = awbPath;
 
-            awbReader = new(File.OpenRead(awbPath));
+            using var acbReader = new AcbReader(File.OpenRead(acbPath));
 
-            TrackCount = awbReader.Waves.Count;
+            if (string.IsNullOrEmpty(awbPath) && acbReader.HasMemoryAwb)
+            {
+                TrackCount = acbReader.GetAwb().Waves.Count;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(awbPath)) return;
+
+                using var awbReader = new AwbReader(File.OpenRead(awbPath));
+                TrackCount = awbReader.Waves.Count;
+            }
         }
 
         public override string Name { get; }

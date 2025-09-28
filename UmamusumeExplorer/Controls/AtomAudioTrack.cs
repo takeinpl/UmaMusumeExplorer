@@ -6,18 +6,32 @@ namespace UmamusumeExplorer.Controls
 {
     internal class AtomAudioTrack : IAudioTrack
     {
-        private readonly string awb;
+        private readonly FileStream acbFile;
+        private readonly AwbReader awbReader;
         private readonly int index;
 
         public AtomAudioTrack(string acbPath, string awbPath, int waveIndex)
         {
-            using var acbFile = File.OpenRead(acbPath);
+            acbFile = File.OpenRead(acbPath);
+
             AcbParser acbNameLoader = new(acbFile);
 
-            Name = acbNameLoader.LoadWaveName(waveIndex, 0, false);
+            bool hasMemory = false;
+            if (string.IsNullOrEmpty(awbPath))
+            {
+                AcbReader acbReader = new(acbFile);
+                awbReader = acbReader.GetAwb();
 
-            awb = awbPath;
+                hasMemory = acbReader.HasMemoryAwb;
+            }
+            else
+            {
+                awbReader = new(File.OpenRead(awbPath));
+            }
+
             index = waveIndex;
+
+            Name = acbNameLoader.LoadWaveName(waveIndex, 0, hasMemory);
         }
 
         public string Name { get; }
@@ -26,8 +40,6 @@ namespace UmamusumeExplorer.Controls
         {
             get
             {
-                AwbReader awbReader = new(File.OpenRead(awb));
-
                 return new UmaWaveStream(awbReader, awbReader.Waves[index].WaveId);
             }
         }
