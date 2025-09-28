@@ -3,6 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Text;
 using UmamsumeData;
+using UmamusumeExplorer.Assets;
 
 namespace UmamusumeExplorer.Pages
 {
@@ -261,6 +262,7 @@ namespace UmamusumeExplorer.Pages
                 {
                     string dataFilePath = UmaDataHelper.GetPath(entry);
                     string realFileName = entry.Name.TrimStart('/');
+                    long encryptionKey = entry.EncryptionKey;
                     if (entry.Manifest.StartsWith("manifest")) realFileName += ".manifest";
                     string realFilePath = Path.Combine(outputDirectory, realFileName);
                     string destinationDirectory;
@@ -272,7 +274,19 @@ namespace UmamusumeExplorer.Pages
 
                     Directory.CreateDirectory(destinationDirectory);
 
-                    if (!File.Exists(realFilePath) && File.Exists(dataFilePath)) File.Copy(dataFilePath, realFilePath);
+                    if (!File.Exists(realFilePath) && File.Exists(dataFilePath))
+                    {
+                        if (encryptionKey == 0)
+                        {
+                            File.Copy(dataFilePath, realFilePath, true);
+                        }
+                        else
+                        {
+                            using EncryptedAssetStream assetStream = new(dataFilePath, encryptionKey);
+                            using FileStream destinationStream = new(realFilePath, FileMode.Create, FileAccess.Write);
+                            assetStream.CopyTo(destinationStream);
+                        }
+                    }
 
                     lock (finishedLock)
                     {
