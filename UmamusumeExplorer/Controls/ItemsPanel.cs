@@ -33,6 +33,8 @@ namespace UmamusumeExplorer.Controls
             }
         }
 
+        public bool LoadingDone { get; private set; }
+
         public abstract bool ProcessItem(TargetType item, ref Control? displayControl);
 
         public bool Indeterminate
@@ -140,6 +142,7 @@ namespace UmamusumeExplorer.Controls
                 AutoScroll = false;
             }
 
+            LoadingDone = true;
             LoadingFinished?.Invoke(this, EventArgs.Empty);
         }
 
