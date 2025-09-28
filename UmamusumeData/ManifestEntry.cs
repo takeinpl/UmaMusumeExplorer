@@ -38,6 +38,9 @@ namespace UmamsumeData
         [Column("p"), NotNull]
         public int Priority { get; set; }
 
+        [Column("e"), NotNull]
+        public long EncryptionKey { get; set; }
+
         public string BaseName
         {
             get

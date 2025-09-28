@@ -1,4 +1,5 @@
-﻿using UmamusumeExplorer.Assets;
+﻿using UmamsumeData;
+using UmamusumeExplorer.Assets;
 
 namespace UmamusumeExplorer
 {
@@ -18,6 +19,7 @@ namespace UmamusumeExplorer
             {
                 try
                 {
+                    UmaDataHelper.Initialize();
                     AssetTables.UpdateProgress += UpdateProgress;
                     AssetTables.Initialize();
                     AssetTables.UpdateProgress -= UpdateProgress;
@@ -26,7 +28,8 @@ namespace UmamusumeExplorer
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"Error reading tables. Please launch the game and allow itself to repair.\n\nMessage:\n{e.InnerException?.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    string message = e.InnerException?.Message ?? e.Message;
+                    MessageBox.Show($"Error reading tables.\n\nMessage:\n{message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Application.Exit();
                 }
             });

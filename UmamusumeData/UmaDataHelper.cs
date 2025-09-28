@@ -8,9 +8,11 @@ namespace UmamsumeData
 {
     public static class UmaDataHelper
     {
+        private const string key = "9c2bab97bcf8c0c4f1a9ea7881a213f6c9ebf9d8d4c6a8e43ce5a259bde7e9fd";
+
         private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
         private static string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
-
+        private static bool isMetaFileEncrypted = false;
         private static List<ManifestEntry>? manifestEntries;
 
         public static string UmamusumeDirectory { get => umaMusumeDirectory; set => umaMusumeDirectory = value; }
@@ -25,6 +27,17 @@ namespace UmamsumeData
         {
             return Directory.Exists(UmamusumeDirectory) &&
                 File.Exists(MetaFile) && File.Exists(MasterFile);
+        }
+
+        public static void Initialize()
+        {
+            if (File.Exists(MetaFile))
+            {
+                BinaryReader reader = new(File.OpenRead(MetaFile));
+                isMetaFileEncrypted = reader.ReadUInt32() != 0x694C5153;
+            }
+
+            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
         }
 
         public static string GetPath(ManifestEntry? entry)
@@ -50,7 +63,7 @@ namespace UmamsumeData
 
         public static List<ManifestEntry> GetManifestEntries(Func<ManifestEntry, bool>? condition = null)
         {
-            manifestEntries ??= GetRows<ManifestEntry>(MetaFile);
+            manifestEntries ??= GetRows<ManifestEntry>(OpenDatabase(MetaFile, isMetaFileEncrypted));
 
             if (condition is not null)
                 return manifestEntries.Where(condition).ToList();
@@ -59,15 +72,26 @@ namespace UmamsumeData
         }
 
         public static List<T> GetMasterDatabaseRows<T>(Func<T, bool>? condition = null) where T : new()
-            => GetRows(MasterFile, condition);
+            => GetRows(OpenDatabase(MasterFile), condition);
 
-        private static List<T> GetRows<T>(string databaseFile, Func<T, bool>? condition = null) where T : new()
+        private static SQLiteConnection OpenDatabase(string databaseFile, bool encrypted = false)
+        {
+            SQLiteConnection connection = new(databaseFile, SQLiteOpenFlags.ReadOnly);
+
+            if (encrypted)
+            {
+                connection.ExecuteScalar<string>($"pragma hexkey = '{key}';");
+            }
+
+            return connection;
+        }
+
+        private static List<T> GetRows<T>(SQLiteConnection connection, Func<T, bool>? condition = null) where T : new()
         {
             List<T> rows;
 
             try
             {
-                SQLiteConnection connection = new(databaseFile, SQLiteOpenFlags.ReadOnly);
                 TableQuery<T> table = connection.Table<T>();
 
                 if (condition is not null)

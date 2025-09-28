@@ -162,21 +162,32 @@ namespace UmamusumeExplorer.Assets
 
         public static void LoadAsset(AssetsManager assetsManager, string assetName)
         {
-            string assetPath = GetFilePath(assetName);
+            string assetPath = GetFileInfo(assetName, out long encryptionKey);
 
             if (string.IsNullOrEmpty(assetPath))
                 return;
 
-            BundleFileInstance bundle = assetsManager.LoadBundleFile(assetPath);
+            FileStream assetStream;
+            if (encryptionKey == 0)
+            {
+                assetStream = File.OpenRead(assetPath);
+            }
+            else
+            {
+                assetStream = new EncryptedAssetStream(assetPath, encryptionKey);
+            }
+
+            BundleFileInstance bundle = assetsManager.LoadBundleFile(assetStream);
             foreach (var assetsFile in bundle.file.GetAllFileNames())
             {
                 assetsManager.LoadAssetsFileFromBundle(bundle, assetsFile);
             }
         }
 
-        private static string GetFilePath(string entryName)
+        private static string GetFileInfo(string entryName, out long encryptionKey)
         {
             ManifestEntry? entry = UmaDataHelper.GetManifestEntries(e => e.Name == entryName || e.BaseName == entryName).FirstOrDefault();
+            encryptionKey = entry?.EncryptionKey ?? 0;
             return UmaDataHelper.GetPath(entry);
         }
 
