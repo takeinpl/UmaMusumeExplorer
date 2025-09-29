@@ -34,7 +34,7 @@ namespace UmamusumeExplorer.Pages
         {
             InitializeComponent();
 
-            waveOut = new WaveOutEvent() { DesiredLatency = 100 };
+            waveOut = new WaveOutEvent();
 
             if (Application.UseVisualStyles)
                 seekTrackBar.BackColor = Color.FromArgb(255, 249, 249, 249);
@@ -93,14 +93,30 @@ namespace UmamusumeExplorer.Pages
 
                 if ((File.Exists(acbPath) && File.Exists(awbPath)) || File.Exists(acbPath))
                 {
-                    AtomAudioSource? audioSource = new(baseName, acbPath, awbPath);
+                    ListViewItem item = new([baseName, ""]);
+                    listViewItems.Add(item);
 
-                    if (audioSource is not null)
+                    Task.Run(() =>
                     {
-                        string name = gameFile.BaseName;
-                        listViewItems.Add(new ListViewItem([baseName, audioSource.TrackCount.ToString()])
-                        { Tag = audioSource });
-                    }
+                        AtomAudioSource? audioSource = new(baseName, acbPath, awbPath);
+
+                        if (audioSource is not null)
+                        {
+                            int trackCount = audioSource.TrackCount;
+                            if (trackCount > 0)
+                            {
+                                fileListView.Invoke(() =>
+                                {
+                                    item.SubItems[1].Text = trackCount.ToString();
+                                    item.Tag = audioSource;
+                                });
+                            }
+                            else
+                            {
+                                item.ForeColor = Color.Red;
+                            }
+                        }
+                    });
                 }
 
                 currentFile++;
