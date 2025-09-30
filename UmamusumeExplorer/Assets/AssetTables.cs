@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using UmamsumeData;
 using UmamsumeData.Tables;
 
@@ -13,7 +12,7 @@ namespace UmamusumeExplorer.Assets
             IEnumerable<PropertyInfo> properties = assetTablesType.GetProperties().Where(p => p.PropertyType.Name == "List`1");
 
             Queue<LoadAction> customLoadAction = new();
-            customLoadAction.Enqueue(() => { AudioAssetEntries.AddRange(UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("sound/"))); return "AudioAssetEntries"; });
+            customLoadAction.Enqueue(() => AudioAssetEntries.AddRange(UmaDataHelper.GetManifestEntries(ga => ga.Name.StartsWith("sound/"))));
 
             int completed = 0;
             foreach (var property in properties)
@@ -21,6 +20,9 @@ namespace UmamusumeExplorer.Assets
                 Type listType = property.PropertyType.GenericTypeArguments[0];
 
                 string name = property.Name;
+
+                UpdateProgress?.Invoke((int)((float)completed / properties.Count() * 100), name);
+
                 if (name == listType.Name + "s")
                 {
                     MethodInfo? targetMethod = (typeof(UmaDataHelper).GetMethod("GetMasterDatabaseRows")?.MakeGenericMethod(listType)) ??
@@ -29,14 +31,14 @@ namespace UmamusumeExplorer.Assets
                 }
                 else
                 {
-                    name = customLoadAction.Dequeue().Invoke();
+                    customLoadAction.Dequeue().Invoke();
                 }
 
-                UpdateProgress?.Invoke((int)((float)++completed / properties.Count() * 100), name);
+                completed++;
             }
         }
 
-        public delegate string LoadAction();
+        public delegate void LoadAction();
 
         public delegate void ProgressUpdater(int progress, string loadedName);
 
