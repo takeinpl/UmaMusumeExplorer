@@ -43,7 +43,10 @@ namespace UmamusumeExplorer
             Invoke(() =>
             {
                 loadingProgressBar.Value = progress;
+                if (progress < 100)
                 loadingLabel.Text = $"Loading {name}...";
+                else
+                    loadingLabel.Text = "Starting...";
             });
         }
 

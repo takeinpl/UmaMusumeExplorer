@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Xml.Linq;
 using UmamsumeData;
 using UmamsumeData.Tables;
 
@@ -36,6 +37,8 @@ namespace UmamusumeExplorer.Assets
 
                 completed++;
             }
+
+            UpdateProgress?.Invoke(100, "");
         }
 
         public delegate void LoadAction();
