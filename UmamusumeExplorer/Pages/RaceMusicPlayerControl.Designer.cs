@@ -192,11 +192,11 @@ namespace UmamusumeExplorer.Pages
             // 
             // amplifyUpDown
             // 
-            resources.ApplyResources(amplifyUpDown, "amplifyUpDown");
+            resources.ApplyResources(amplifyUpDown, "volumeUpDown");
             amplifyUpDown.DecimalPlaces = 1;
             amplifyUpDown.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
             amplifyUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            amplifyUpDown.Name = "amplifyUpDown";
+            amplifyUpDown.Name = "volumeUpDown";
             amplifyUpDown.Value = new decimal(new int[] { 40, 0, 0, 65536 });
             amplifyUpDown.ValueChanged += AmplifyUpDown_ValueChanged;
             // 

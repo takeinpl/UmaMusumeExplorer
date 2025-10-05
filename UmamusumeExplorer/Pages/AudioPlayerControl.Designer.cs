@@ -49,8 +49,8 @@ namespace UmamusumeExplorer.Pages
             audioTypeLabel = new Label();
             loadingFileNameLabel = new Label();
             rightPanel = new Panel();
-            amplifyUpDown = new NumericUpDown();
-            amplifyLabel = new Label();
+            volumeUpDown = new NumericUpDown();
+            volumeLabel = new Label();
             configureLoopButton = new Button();
             exportButton = new Button();
             timeLengthLabel = new Label();
@@ -67,7 +67,7 @@ namespace UmamusumeExplorer.Pages
             tableLayoutPanel.SuspendLayout();
             leftPanel.SuspendLayout();
             rightPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)amplifyUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)volumeUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)seekTrackBar).BeginInit();
             controlsTableLayoutPanel.SuspendLayout();
             SuspendLayout();
@@ -194,8 +194,8 @@ namespace UmamusumeExplorer.Pages
             // 
             // rightPanel
             // 
-            rightPanel.Controls.Add(amplifyUpDown);
-            rightPanel.Controls.Add(amplifyLabel);
+            rightPanel.Controls.Add(volumeUpDown);
+            rightPanel.Controls.Add(volumeLabel);
             rightPanel.Controls.Add(configureLoopButton);
             rightPanel.Controls.Add(exportButton);
             rightPanel.Controls.Add(timeLengthLabel);
@@ -206,20 +206,20 @@ namespace UmamusumeExplorer.Pages
             resources.ApplyResources(rightPanel, "rightPanel");
             rightPanel.Name = "rightPanel";
             // 
-            // amplifyUpDown
+            // volumeUpDown
             // 
-            resources.ApplyResources(amplifyUpDown, "amplifyUpDown");
-            amplifyUpDown.DecimalPlaces = 1;
-            amplifyUpDown.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            amplifyUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            amplifyUpDown.Name = "amplifyUpDown";
-            amplifyUpDown.Value = new decimal(new int[] { 40, 0, 0, 65536 });
-            amplifyUpDown.ValueChanged += AmplifyUpDown_ValueChanged;
+            resources.ApplyResources(volumeUpDown, "volumeUpDown");
+            volumeUpDown.DecimalPlaces = 1;
+            volumeUpDown.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
+            volumeUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            volumeUpDown.Name = "volumeUpDown";
+            volumeUpDown.Value = new decimal(new int[] { 40, 0, 0, 65536 });
+            volumeUpDown.ValueChanged += VolumeUpDown_ValueChanged;
             // 
-            // amplifyLabel
+            // volumeLabel
             // 
-            resources.ApplyResources(amplifyLabel, "amplifyLabel");
-            amplifyLabel.Name = "amplifyLabel";
+            resources.ApplyResources(volumeLabel, "volumeLabel");
+            volumeLabel.Name = "volumeLabel";
             // 
             // configureLoopButton
             // 
@@ -320,7 +320,7 @@ namespace UmamusumeExplorer.Pages
             leftPanel.PerformLayout();
             rightPanel.ResumeLayout(false);
             rightPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)amplifyUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)volumeUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)seekTrackBar).EndInit();
             controlsTableLayoutPanel.ResumeLayout(false);
             ResumeLayout(false);
@@ -349,8 +349,8 @@ namespace UmamusumeExplorer.Pages
         private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.Label loadingFileNameLabel;
         private System.Windows.Forms.Button configureLoopButton;
-        private System.Windows.Forms.Label amplifyLabel;
-        private System.Windows.Forms.NumericUpDown amplifyUpDown;
+        private System.Windows.Forms.Label volumeLabel;
+        private System.Windows.Forms.NumericUpDown volumeUpDown;
         private System.Windows.Forms.ComboBox audioTypeComboBox;
         private System.Windows.Forms.Label audioTypeLabel;
         private System.Windows.Forms.Button refreshButton;

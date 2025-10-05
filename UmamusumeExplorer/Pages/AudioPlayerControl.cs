@@ -12,8 +12,6 @@ namespace UmamusumeExplorer.Pages
 {
     partial class AudioPlayerControl : UserControl
     {
-        private readonly BackgroundWorker trackCountBackgroundWorker = new();
-
         private readonly WaveOutEvent waveOut;
         private readonly object waveOutLock = new();
 
@@ -91,12 +89,13 @@ namespace UmamusumeExplorer.Pages
                 string acbPath = UmaDataHelper.GetPath(gameFile);
                 string awbPath = UmaDataHelper.GetPath(AssetTables.AudioAssetEntries.FirstOrDefault((gf) => gf.BaseName == awbName));
 
-                if ((File.Exists(acbPath) && File.Exists(awbPath)) || File.Exists(acbPath))
-                {
-                    ListViewItem item = new([baseName, ""]);
-                    listViewItems.Add(item);
+                ListViewItem item = new([baseName, ""]);
+                listViewItems.Add(item);
+                item.ForeColor = Color.Red;
 
-                    Task.Run(() =>
+                Task.Run(() =>
+                {
+                    if ((File.Exists(acbPath) && File.Exists(awbPath)) || File.Exists(acbPath))
                     {
                         AtomAudioSource? audioSource = new(baseName, acbPath, awbPath);
 
@@ -106,18 +105,15 @@ namespace UmamusumeExplorer.Pages
                             if (trackCount > 0)
                             {
                                 fileListView.Invoke(() =>
-                                {
-                                    item.SubItems[1].Text = trackCount.ToString();
-                                    item.Tag = audioSource;
-                                });
-                            }
-                            else
-                            {
-                                item.ForeColor = Color.Red;
+                                    {
+                                        item.SubItems[1].Text = trackCount.ToString();
+                                    });
+                                item.Tag = audioSource;
+                                item.ForeColor = Color.Black;
                             }
                         }
-                    });
-                }
+                    }
+                });
 
                 currentFile++;
 
@@ -302,10 +298,10 @@ namespace UmamusumeExplorer.Pages
                 ControlHelpers.ShowFormDialogCenter(new ConfigureLoopForm(umaWaveStream), this);
         }
 
-        private void AmplifyUpDown_ValueChanged(object sender, EventArgs e)
+        private void VolumeUpDown_ValueChanged(object sender, EventArgs e)
         {
             if (volumeSampleProvider is not null)
-                volumeSampleProvider.Volume = (float)amplifyUpDown.Value;
+                volumeSampleProvider.Volume = (float)volumeUpDown.Value;
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
@@ -387,7 +383,7 @@ namespace UmamusumeExplorer.Pages
         private void InitializeWaveOut(WaveStream waveStream)
         {
             waveOut.Stop();
-            volumeSampleProvider = new VolumeSampleProvider(waveStream.ToSampleProvider()) { Volume = (float)amplifyUpDown.Value };
+            volumeSampleProvider = new VolumeSampleProvider(waveStream.ToSampleProvider()) { Volume = (float)volumeUpDown.Value };
             waveOut.Init(volumeSampleProvider);
         }
 
@@ -470,7 +466,7 @@ namespace UmamusumeExplorer.Pages
                 WaveFileWriter.CreateWaveFile16(save.FileName,
                     new VolumeSampleProvider(copy.ToSampleProvider())
                     {
-                        Volume = (float)amplifyUpDown.Value
+                        Volume = (float)volumeUpDown.Value
                     });
 
                 MessageBox.Show("Export complete.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
