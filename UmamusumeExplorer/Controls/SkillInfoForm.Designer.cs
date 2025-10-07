@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            iconPictureBox = new UmamusumeExplorer.Controls.HighQualityPictureBox();
+            iconPictureBox = new HighQualityPictureBox();
             skillNameLabel = new Label();
             skillDescriptionLabel = new Label();
             closeButton = new Button();
@@ -65,7 +65,7 @@
             skillDescriptionLabel.Font = new Font("Segoe UI", 12F);
             skillDescriptionLabel.Location = new Point(120, 39);
             skillDescriptionLabel.Name = "skillDescriptionLabel";
-            skillDescriptionLabel.Size = new Size(384, 104);
+            skillDescriptionLabel.Size = new Size(463, 104);
             skillDescriptionLabel.TabIndex = 1;
             skillDescriptionLabel.Text = "Skill description";
             // 
@@ -127,7 +127,6 @@
             Controls.Add(skillPointHint);
             Controls.Add(skillNameLabel);
             Controls.Add(iconPictureBox);
-            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "SkillInfoForm";
