@@ -37,7 +37,7 @@
             // 
             titleLabel.AutoSize = true;
             titleLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            titleLabel.Location = new Point(116, 34);
+            titleLabel.Location = new Point(115, 33);
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new Size(352, 45);
             titleLabel.TabIndex = 0;
@@ -46,25 +46,25 @@
             // loadingLabel
             // 
             loadingLabel.Font = new Font("Segoe UI", 15.75F);
-            loadingLabel.Location = new Point(12, 79);
+            loadingLabel.Location = new Point(12, 78);
             loadingLabel.Name = "loadingLabel";
-            loadingLabel.Size = new Size(561, 30);
+            loadingLabel.Size = new Size(559, 30);
             loadingLabel.TabIndex = 1;
             loadingLabel.Text = "Reading tables...";
             loadingLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // loadingProgressBar
             // 
-            loadingProgressBar.Location = new Point(111, 112);
+            loadingProgressBar.Location = new Point(115, 111);
             loadingProgressBar.Name = "loadingProgressBar";
-            loadingProgressBar.Size = new Size(363, 23);
+            loadingProgressBar.Size = new Size(352, 23);
             loadingProgressBar.TabIndex = 2;
             // 
             // SplashForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(585, 169);
+            ClientSize = new Size(583, 167);
             Controls.Add(loadingProgressBar);
             Controls.Add(loadingLabel);
             Controls.Add(titleLabel);

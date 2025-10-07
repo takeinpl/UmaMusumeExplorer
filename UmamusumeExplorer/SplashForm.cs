@@ -1,9 +1,10 @@
 ﻿using UmamsumeData;
 using UmamusumeExplorer.Assets;
+using UmamusumeExplorer.Controls;
 
 namespace UmamusumeExplorer
 {
-    public partial class SplashForm : Form
+    public partial class SplashForm : BorderlessAeroForm
     {
         private Thread? loadThread;
         private bool loadSuccess = false;
@@ -11,6 +12,7 @@ namespace UmamusumeExplorer
         public SplashForm()
         {
             InitializeComponent();
+            SetBorderlessAndAdjust();
         }
 
         public bool LoadAndClose()
@@ -44,7 +46,7 @@ namespace UmamusumeExplorer
             {
                 loadingProgressBar.Value = progress;
                 if (progress < 100)
-                loadingLabel.Text = $"Loading {name}...";
+                    loadingLabel.Text = $"Loading {name}...";
                 else
                     loadingLabel.Text = "Starting...";
             });
