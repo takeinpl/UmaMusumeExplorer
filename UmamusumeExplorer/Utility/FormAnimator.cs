@@ -21,7 +21,7 @@ namespace UmamusumeExplorer.Utility
             this.defaultHeight = defaultHeight;
             this.expandedHeight = expandedHeight;
 
-            timer = new((int)(1000F / 30F));
+            timer = new((int)(1000F / 60F));
             timer.Elapsed += Elapsed;
         }
 
@@ -42,7 +42,7 @@ namespace UmamusumeExplorer.Utility
                 finished = true;
 
             if (!finished)
-                currentProgress += timer.Interval / 600F;
+                currentProgress += timer.Interval / 500F;
 
             if (finished)
             {
@@ -106,6 +106,15 @@ namespace UmamusumeExplorer.Utility
         private static float Ease(float x)
         {
             // Formulas from https://easings.net/
+
+            // Linear
+            //return x;
+
+            // EaseInOutSine
+            //return (float)(-(Math.Cos(Math.PI * x) - 1) / 2);
+
+            // EaseInOutQuad
+            //return (float)(x < 0.5 ? 2 * x * x : 1 - Math.Pow(-2 * x + 2, 2) / 2);
 
             // EaseInOutCubic
             //return (float)(x < 0.5F ? 8F * x * x * x * x : 1F - Math.Pow(-2F * x + 2F, 4F) / 2F);
