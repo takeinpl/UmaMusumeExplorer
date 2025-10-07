@@ -137,7 +137,7 @@ namespace UmamusumeExplorer.Music
                 ga => ga.Name.ToLower().Contains(cueSheetName.ToLower() + ".awb"));
 
             // Get BGM without sound effects
-            AwbReader? okeAwb = GetAwbFile(audioAssetEntries.First());
+            AwbReader? okeAwb = GetAwbFile(audioAssetEntries.FirstOrDefault());
 
             if (okeAwb is null) return ShowMissingResources(1);
 
