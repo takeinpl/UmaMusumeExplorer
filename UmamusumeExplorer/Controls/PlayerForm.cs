@@ -303,7 +303,7 @@ namespace UmamusumeExplorer.Controls
             foreach (var characterPosition in liveManager.CharacterPositions)
             {
                 charaContainerPanel.Controls.Add(
-                    new CharacterPositionControl(characterPosition.Position, CharacterClick, ExChecked, 70)
+                    new CharacterPositionControl(characterPosition.Position, CharacterClick, ModeChanged, 70)
                     {
                         CharacterId = characterPosition.CharacterId,
                         FontSize = 12F,
@@ -331,7 +331,7 @@ namespace UmamusumeExplorer.Controls
             }
         }
 
-        private void ExChecked(object? sender, EventArgs e)
+        private void ModeChanged(object? sender, MultiStateButtonEventArgs e)
         {
             if (customVoiceControlCheckBox.Checked)
             {
@@ -342,7 +342,7 @@ namespace UmamusumeExplorer.Controls
                 if (singersEnabled is null) return;
 
                 CharaTrack track = songMixer.CharaTracks[character.Position];
-                track.ForceEx = character.ExChecked;
+                track.ForceMode = (TrackMode)e.Value;
             }
         }
 
@@ -422,7 +422,7 @@ namespace UmamusumeExplorer.Controls
 
                             if (!customVoiceControlCheckBox.Checked)
                             {
-                                chara.ExChecked = songMixer.CharaTracks[chara.Position].ActiveEx;
+                                chara.Mode = songMixer.CharaTracks[chara.Position].Mode;
                             }
 
                             //if (customVoiceControlCheckBox.Checked)

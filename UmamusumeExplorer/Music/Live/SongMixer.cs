@@ -106,7 +106,7 @@ namespace UmamusumeExplorer.Music.Live
             {
                 bool[] enabledStates = new bool[charaAwbs.Length];
                 bool[] forceSingStates = new bool[charaAwbs.Length];
-                bool[] forceExStates = new bool[charaAwbs.Length];
+                TrackMode[] forceModes = new TrackMode[charaAwbs.Length];
 
                 for (int i = 0; i < enabledStates.Length; i++)
                 {
@@ -114,7 +114,7 @@ namespace UmamusumeExplorer.Music.Live
                     {
                         enabledStates[i] = CharaTracks[i].Enabled;
                         forceSingStates[i] = CharaTracks[i].ForceSing;
-                        forceExStates[i] = CharaTracks[i].ForceEx;
+                        forceModes[i] = CharaTracks[i].ForceMode;
                     }
                     else
                     {
@@ -132,7 +132,7 @@ namespace UmamusumeExplorer.Music.Live
                         Position = okeWaveStream.Position,
                         Enabled = enabledStates[i],
                         ForceSing = forceSingStates[i],
-                        ForceEx = forceExStates[i]
+                        ForceMode = forceModes[i]
                     };
 
                     CharaTracks.Add(newCharaTrack);

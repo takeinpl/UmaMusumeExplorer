@@ -1,4 +1,5 @@
 ﻿using UmamusumeExplorer.Assets;
+using UmamusumeExplorer.Music.Live;
 using Image = System.Drawing.Image;
 
 namespace UmamusumeExplorer.Controls
@@ -9,9 +10,9 @@ namespace UmamusumeExplorer.Controls
         private int characterId = 0;
         private Image? characterImage;
         private bool disabled = false;
-        private bool showEx = false;
+        private bool showMode = false;
 
-        public CharacterPositionControl(int position, EventHandler clickEventHandler, EventHandler? exCheckEventHandler, int width = -1)
+        public CharacterPositionControl(int position, EventHandler clickEventHandler, EventHandler<MultiStateButtonEventArgs>? modeChangedEventHandler, int width = -1)
         {
             InitializeComponent();
 
@@ -19,11 +20,12 @@ namespace UmamusumeExplorer.Controls
 
             positionIndexLabel.Text = (characterPosition + 1).ToString();
             characterPictureBox.BackgroundImage = GameAssets.GetCharaIcon(0)?.Bitmap;
+            modeButton.Setup(typeof(TrackMode));
 
             float ratio = (float)characterPictureBox.Height / characterPictureBox.Width;
 
             characterPictureBox.Click += clickEventHandler;
-            exCheckBox.CheckedChanged += exCheckEventHandler;
+            modeButton.StateChanged += modeChangedEventHandler;
 
             if (width > 0)
             {
@@ -31,9 +33,9 @@ namespace UmamusumeExplorer.Controls
             }
 
             characterPictureBox.Height = (int)(characterPictureBox.Width * ratio);
-            exCheckBox.Top = characterPictureBox.Top + characterPictureBox.Height + 6;
+            modeButton.Top = characterPictureBox.Top + characterPictureBox.Height + 6;
 
-            exCheckBox.Visible = showEx;
+            modeButton.Visible = showMode;
         }
 
         public int Position
@@ -81,18 +83,18 @@ namespace UmamusumeExplorer.Controls
 
         public bool ShowEx
         {
-            get => showEx;
+            get => showMode;
             set
             {
-                showEx = value;
-                exCheckBox.Visible = showEx;
+                showMode = value;
+                modeButton.Visible = showMode;
             }
         }
 
-        public bool ExChecked
+        public TrackMode Mode
         {
-            get => exCheckBox.Checked;
-            set => exCheckBox.Checked = value;
+            get => modeButton.State is null ? TrackMode.Main : (TrackMode)modeButton.State;
+            set => modeButton.State = value;
         }
     }
 }

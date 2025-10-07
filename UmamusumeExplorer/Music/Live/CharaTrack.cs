@@ -14,7 +14,7 @@ namespace UmamusumeExplorer.Music.Live
         private readonly PanSampleProvider mainSampleProvider;
         private readonly PanSampleProvider? secondSampleProvider;
 
-        private readonly List<Trigger> triggers = new();
+        private readonly List<Trigger> triggers = [];
 
         private float[]? mainBuffer;
         private float[]? secondBuffer;
@@ -89,11 +89,11 @@ namespace UmamusumeExplorer.Music.Live
 
         public bool ForceSing { get; set; }
 
-        public bool ForceEx { get; set; }
+        public TrackMode ForceMode { get; set; }
 
         public bool Active { get; private set; }
 
-        public bool ActiveEx { get; private set; }
+        public TrackMode Mode { get; private set; }
 
         public int Read(float[] buffer, int offset, int count)
         {
@@ -157,7 +157,13 @@ namespace UmamusumeExplorer.Music.Live
                     if (ForceSing)
                     {
                         buffer[index] = mainBuffer[index];
-                        if (secondBuffer is not null && ForceEx) buffer[index] = secondBuffer[index];
+                        if (secondBuffer is not null)
+                        {
+                            if (ForceMode == TrackMode.Extra)
+                                buffer[index] = secondBuffer[index];
+                            else if (ForceMode == TrackMode.Merge)
+                                buffer[index] += secondBuffer[index];
+                        }
                     }
                     else if (targetBuffer is not null)
                         buffer[index] = targetBuffer[index] * volumeMultiplier;
@@ -168,7 +174,15 @@ namespace UmamusumeExplorer.Music.Live
                         buffer[index] = 0;
 
                     Active = targetBuffer is not null && volumeMultiplier > 0F;
-                    ActiveEx = Active && targetBuffer == secondBuffer;
+                    if (Active)
+                    {
+                        if (targetBuffer == mainBuffer)
+                            Mode = TrackMode.Main;
+                        else if (targetBuffer == secondBuffer)
+                            Mode = TrackMode.Extra;
+                    }
+                    else
+                        Mode = TrackMode.Main;
                 }
 
                 currentSample++;

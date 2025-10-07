@@ -30,7 +30,7 @@
         {
             positionIndexLabel = new Label();
             characterPictureBox = new HighQualityPictureBox();
-            exCheckBox = new CheckBox();
+            modeButton = new MultiStateButton();
             ((System.ComponentModel.ISupportInitialize)characterPictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -57,23 +57,22 @@
             characterPictureBox.TabIndex = 1;
             characterPictureBox.TabStop = false;
             // 
-            // exCheckBox
+            // modeButton
             // 
-            exCheckBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            exCheckBox.Appearance = Appearance.Button;
-            exCheckBox.Location = new Point(3, 165);
-            exCheckBox.Name = "exCheckBox";
-            exCheckBox.Size = new Size(109, 25);
-            exCheckBox.TabIndex = 2;
-            exCheckBox.Text = "EX";
-            exCheckBox.TextAlign = ContentAlignment.MiddleCenter;
-            exCheckBox.UseVisualStyleBackColor = true;
+            modeButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            modeButton.Location = new Point(3, 165);
+            modeButton.Name = "modeButton";
+            modeButton.Size = new Size(109, 25);
+            modeButton.State = null;
+            modeButton.TabIndex = 2;
+            modeButton.Text = "Mode";
+            modeButton.UseVisualStyleBackColor = true;
             // 
             // CharacterPositionControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(exCheckBox);
+            Controls.Add(modeButton);
             Controls.Add(characterPictureBox);
             Controls.Add(positionIndexLabel);
             Name = "CharacterPositionControl";
@@ -86,6 +85,6 @@
 
         private System.Windows.Forms.Label positionIndexLabel;
         private HighQualityPictureBox characterPictureBox;
-        private CheckBox exCheckBox;
+        private MultiStateButton modeButton;
     }
 }
