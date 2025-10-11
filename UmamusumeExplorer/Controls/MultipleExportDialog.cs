@@ -67,7 +67,7 @@ namespace UmamusumeExplorer.Controls
 
             if (e.UserState is not State state) return;
 
-            currentFileLabel.Text = "Exporing " + state.Name;
+            currentFileLabel.Text = "Exporting " + state.Name;
             progressLabel.Text = $"{state.CurrentFile} of {sources.Length}";
         }
 

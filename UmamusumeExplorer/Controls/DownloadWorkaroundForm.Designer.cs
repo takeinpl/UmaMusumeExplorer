@@ -95,9 +95,9 @@
             labelStep3.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             labelStep3.Location = new Point(12, 100);
             labelStep3.Name = "labelStep3";
-            labelStep3.Size = new Size(371, 15);
+            labelStep3.Size = new Size(384, 15);
             labelStep3.TabIndex = 4;
-            labelStep3.Text = "4. OPTIONAL: Click the button below cache the downloaded resources\r\n";
+            labelStep3.Text = "4. OPTIONAL: Click the button below to cache the downloaded resources\r\n";
             // 
             // labelStep4
             // 
