@@ -8,6 +8,9 @@ namespace UmamusumeExplorer.Controls
     {
         private readonly AudioSource[] sources;
         private readonly string outputPath;
+        private readonly Dictionary<AudioSource, Exception> exceptions = [];
+
+        private int completed = 0;
 
         public MultipleExportDialog(AudioSource[] audioSources, string outputDirectory)
         {
@@ -37,24 +40,44 @@ namespace UmamusumeExplorer.Controls
 
                 exportBackgroundWorker.ReportProgress((int)(((float)currentFile / sources.Length) * 100), state);
 
-                if (audioSource.Tracks.Length > 1)
+                try
                 {
-                    string directory = Path.Combine(outputPath, audioSource.Name);
-                    Directory.CreateDirectory(directory);
-
-                    foreach (var track in audioSource.Tracks)
+                    if (audioSource.Tracks.Length > 1)
                     {
-                        UmaWaveStream waveStream = (UmaWaveStream)track.WaveStream;
-                        waveStream.Loop = false;
-                        WaveFileWriter.CreateWaveFile16(Path.Combine(directory, track.Name + ".wav"), waveStream.ToSampleProvider());
+                        string directory = Path.Combine(outputPath, audioSource.Name);
+                        Directory.CreateDirectory(directory);
+
+                        foreach (var track in audioSource.Tracks)
+                        {
+                            UmaWaveStream waveStream = (UmaWaveStream)track.WaveStream;
+                            waveStream.Loop = false;
+
+                            string fileName = Path.Combine(directory, track.Name + ".wav");
+                            if (fileName.Length > 128)
+                                fileName = fileName[..128];
+
+                            WaveFileWriter.CreateWaveFile16(fileName, waveStream.ToSampleProvider());
+                        }
                     }
+                    else
+                    {
+                        IAudioTrack audioTrack = audioSource.Tracks[0];
+                        UmaWaveStream waveStream = (UmaWaveStream)audioTrack.WaveStream;
+                        waveStream.Loop = false;
+
+                        string fileName = Path.Combine(outputPath, audioTrack.Name + ".wav");
+                        if (fileName.Length > 128)
+                            fileName = fileName[..128];
+
+                        WaveFileWriter.CreateWaveFile16(fileName, waveStream.ToSampleProvider());
+                    }
+
+                    completed++;
                 }
-                else
+                catch (Exception ex)
                 {
-                    IAudioTrack audioTrack = audioSource.Tracks[0];
-                    UmaWaveStream waveStream = (UmaWaveStream)audioTrack.WaveStream;
-                    waveStream.Loop = false;
-                    WaveFileWriter.CreateWaveFile16(Path.Combine(outputPath, audioTrack.Name + ".wav"), waveStream.ToSampleProvider());
+                    exceptions.Add(audioSource, ex);
+                    progressLabel.ForeColor = Color.DarkOrange;
                 }
 
                 currentFile++;
@@ -67,6 +90,7 @@ namespace UmamusumeExplorer.Controls
 
             if (e.UserState is not State state) return;
 
+            Text = $"Exporting... ({e.ProgressPercentage}%)";
             currentFileLabel.Text = "Exporting " + state.Name;
             progressLabel.Text = $"{state.CurrentFile} of {sources.Length}";
         }
@@ -75,8 +99,15 @@ namespace UmamusumeExplorer.Controls
         {
             if (e.Cancelled)
                 MessageBox.Show("Export cancelled.", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else if (completed != sources.Length)
+                MessageBox.Show($"Export incomplete. ", "Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
                 MessageBox.Show("Export complete.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (exceptions.Count > 0)
+            {
+                ControlHelpers.ShowFormDialogCenter(new IncompleteExportForm(exceptions), this);
+            }
 
             Close();
         }

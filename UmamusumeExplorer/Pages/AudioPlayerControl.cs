@@ -2,8 +2,8 @@
 using NAudio.Wave.SampleProviders;
 using System.ComponentModel;
 using System.Data;
-using UmamusumeAudio;
 using UmamsumeData;
+using UmamusumeAudio;
 using UmamusumeExplorer.Assets;
 using UmamusumeExplorer.Controls;
 using Color = System.Drawing.Color;
@@ -425,7 +425,19 @@ namespace UmamusumeExplorer.Pages
                         {
                             UmaWaveStream copy = (UmaWaveStream)track.WaveStream;
                             copy.Loop = false;
-                            WaveFileWriter.CreateWaveFile16(Path.Combine(directory, track.Name + $"_{currentTrack++:d2}.wav"), copy.ToSampleProvider());
+
+                            string fileName = Path.Combine(directory, track.Name + $"_{currentTrack++:d2}.wav");
+
+                            if (fileName.Length > 128)
+                                fileName = fileName[..128];
+
+                            WaveFileWriter.CreateWaveFile16(fileName,
+                                new VolumeSampleProvider(copy.ToSampleProvider())
+                                {
+                                    Volume = (float)volumeUpDown.Value
+                                });
+
+                            WaveFileWriter.CreateWaveFile16(fileName, copy.ToSampleProvider());
 
                             copy.Dispose();
                             Invoke(() => exportButton.Enabled = true);
@@ -450,7 +462,7 @@ namespace UmamusumeExplorer.Pages
         {
             SaveFileDialog save = new()
             {
-                FileName = audioTrack.Name,
+                FileName = audioTrack.Name.Length > 128 ? audioTrack.Name[..128] : audioTrack.Name,
                 Filter = "16-bit PCM WAV|*.wav"
             };
 

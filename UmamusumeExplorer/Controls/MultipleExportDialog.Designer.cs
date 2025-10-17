@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            progressBar = new System.Windows.Forms.ProgressBar();
-            currentFileLabel = new System.Windows.Forms.Label();
-            cancelButton = new System.Windows.Forms.Button();
-            progressLabel = new System.Windows.Forms.Label();
+            progressBar = new ProgressBar();
+            currentFileLabel = new Label();
+            cancelButton = new Button();
+            progressLabel = new Label();
             exportBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             SuspendLayout();
             // 
             // progressBar
             // 
-            progressBar.Location = new System.Drawing.Point(12, 27);
+            progressBar.Location = new Point(12, 27);
             progressBar.Name = "progressBar";
-            progressBar.Size = new System.Drawing.Size(482, 23);
+            progressBar.Size = new Size(482, 23);
             progressBar.TabIndex = 1;
             // 
             // currentFileLabel
             // 
             currentFileLabel.AutoSize = true;
-            currentFileLabel.Location = new System.Drawing.Point(12, 9);
+            currentFileLabel.Location = new Point(12, 9);
             currentFileLabel.Name = "currentFileLabel";
-            currentFileLabel.Size = new System.Drawing.Size(77, 15);
+            currentFileLabel.Size = new Size(76, 15);
             currentFileLabel.TabIndex = 2;
             currentFileLabel.Text = "Exporting file";
             // 
             // cancelButton
             // 
-            cancelButton.Location = new System.Drawing.Point(419, 56);
+            cancelButton.Location = new Point(419, 56);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new System.Drawing.Size(75, 23);
+            cancelButton.Size = new Size(75, 23);
             cancelButton.TabIndex = 3;
             cancelButton.Text = "Cancel";
             cancelButton.UseVisualStyleBackColor = true;
@@ -64,9 +64,9 @@
             // progressLabel
             // 
             progressLabel.AutoSize = true;
-            progressLabel.Location = new System.Drawing.Point(12, 60);
+            progressLabel.Location = new Point(12, 60);
             progressLabel.Name = "progressLabel";
-            progressLabel.Size = new System.Drawing.Size(36, 15);
+            progressLabel.Size = new Size(36, 15);
             progressLabel.TabIndex = 2;
             progressLabel.Text = "0 of 0";
             // 
@@ -80,15 +80,17 @@
             // 
             // MultipleExportDialog
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(506, 91);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(506, 91);
             Controls.Add(cancelButton);
             Controls.Add(progressLabel);
             Controls.Add(currentFileLabel);
             Controls.Add(progressBar);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "MultipleExportDialog";
-            StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            StartPosition = FormStartPosition.Manual;
             Text = "Exporting...";
             ResumeLayout(false);
             PerformLayout();
