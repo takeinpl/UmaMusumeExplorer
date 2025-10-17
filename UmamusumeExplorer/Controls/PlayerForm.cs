@@ -151,6 +151,9 @@ namespace UmamusumeExplorer.Controls
 
             waveOut.Stop();
             waveOut.Dispose();
+
+            lyricsThread?.Join();
+            voicesThread?.Join();
         }
 
         private void SeekTrackBar_Scroll(object sender, EventArgs e)
@@ -225,7 +228,7 @@ namespace UmamusumeExplorer.Controls
                         updateTimer.Enabled = true;
                     });
 
-                    WaveFileWriter.CreateWaveFile16(saveFileDialog.FileName, (ISampleProvider)this.sampleProvider);
+                    WaveFileWriter.CreateWaveFile16(saveFileDialog.FileName, sampleProvider);
 
                     sampleProvider.Position = restorePosition;
                     lyricsTriggerIndex = 0;
@@ -364,8 +367,6 @@ namespace UmamusumeExplorer.Controls
 
             while (!playbackFinished)
             {
-                Thread.Sleep(1);
-
                 if (sampleProvider is null) continue;
                 if (songMixer is null) continue;
                 if (lyricsTriggers is null) continue;
@@ -382,7 +383,7 @@ namespace UmamusumeExplorer.Controls
                         else break;
                     }
 
-                    TryInvoke(() =>
+                    BeginInvoke(() =>
                     {
                         lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex - 1].Lyrics;
                     });
@@ -393,7 +394,7 @@ namespace UmamusumeExplorer.Controls
                 {
                     while (msElapsed >= lyricsTriggers[lyricsTriggerIndex].TimeMs)
                     {
-                        TryInvoke(() =>
+                        BeginInvoke(() =>
                         {
                             lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics;
                         });
@@ -404,6 +405,8 @@ namespace UmamusumeExplorer.Controls
                     }
 
                 }
+
+                Thread.Sleep(1);
             }
         }
 
@@ -416,7 +419,7 @@ namespace UmamusumeExplorer.Controls
                     foreach (var control in charaContainerPanel.Controls)
                     {
                         if (control is not CharacterPositionControl chara) continue;
-                        TryInvoke(() =>
+                        BeginInvoke(() =>
                         {
                             chara.Disabled = !songMixer.CharaTracks[chara.Position].Active && !customVoiceControlCheckBox.Checked;
 
@@ -435,17 +438,6 @@ namespace UmamusumeExplorer.Controls
                 }
 
                 Thread.Sleep(1);
-            }
-        }
-
-        private void TryInvoke(Action action)
-        {
-            try
-            {
-                Invoke(action);
-            }
-            catch (Exception)
-            {
             }
         }
     }
