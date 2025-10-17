@@ -1,8 +1,5 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using UmamusumeData.DataDirectories;
 
 namespace UmamsumeData
 {
@@ -10,23 +7,43 @@ namespace UmamsumeData
     {
         private const string key = "9c2bab97bcf8c0c4f1a9ea7881a213f6c9ebf9d8d4c6a8e43ce5a259bde7e9fd";
 
-        private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
-        private static string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
+        private readonly static List<DataDirectory> dataDirectories =
+        [
+            new DefaultDataDirectory(),
+            new DmmDataDirectory(),
+            new SteamJapanDataDirectory()
+        ];
+
         private static bool isMetaFileEncrypted = false;
         private static List<ManifestEntry>? manifestEntries;
 
-        public static string UmamusumeDirectory { get => umaMusumeDirectory; set => umaMusumeDirectory = value; }
+        public static string UmamusumeDirectory { get; set; } = "";
 
-        public static string DataDirectory => Path.Combine(UmamusumeDirectory, "dat");
+        public static string ResourceDirectory => Path.Combine(UmamusumeDirectory, "dat");
 
         public static string MetaFile => Path.Combine(UmamusumeDirectory, "meta");
 
         public static string MasterFile => Path.Combine(UmamusumeDirectory, "master", "master.mdb");
 
+
+        public static List<DataDirectory> ScanDirectories()
+        {
+            List<DataDirectory> existingDirectories = [];
+
+            foreach (var dataDirectory in dataDirectories)
+            {
+                if (dataDirectory.Exists())
+                {
+                    existingDirectories.Add(dataDirectory);
+                }
+            }
+
+            return existingDirectories;
+        }
+
         public static bool CheckDirectory()
         {
-            return Directory.Exists(UmamusumeDirectory) &&
-                File.Exists(MetaFile) && File.Exists(MasterFile);
+            return DataDirectory.CheckDirectory(UmamusumeDirectory);
         }
 
         public static void Initialize()
@@ -35,6 +52,7 @@ namespace UmamsumeData
             {
                 BinaryReader reader = new(File.OpenRead(MetaFile));
                 isMetaFileEncrypted = reader.ReadUInt32() != 0x694C5153;
+                reader.Dispose();
             }
 
             SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
@@ -44,7 +62,7 @@ namespace UmamsumeData
         {
             if (entry is not null)
             {
-                string path = Path.Combine(DataDirectory, entry.HashName[..2], entry.HashName);
+                string path = Path.Combine(ResourceDirectory, entry.HashName[..2], entry.HashName);
 
                 if (File.Exists(path)) return path;
                 else return "";
@@ -76,7 +94,7 @@ namespace UmamsumeData
 
         private static SQLiteConnection OpenDatabase(string databaseFile, bool encrypted = false)
         {
-            SQLiteConnection connection = new(databaseFile, SQLiteOpenFlags.ReadOnly);
+            SQLiteConnection connection = new(databaseFile, SQLiteOpenFlags.ReadWrite);
 
             if (encrypted)
             {

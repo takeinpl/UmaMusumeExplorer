@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UmamsumeData;
+﻿using UmamsumeData;
+using UmamusumeData.DataDirectories;
 using UmamusumeExplorer.Assets;
+using UmamusumeExplorer.Controls;
 
 namespace UmamusumeExplorer
 {
@@ -17,12 +14,33 @@ namespace UmamusumeExplorer
             if (File.Exists(pathTextFile))
                 UmaDataHelper.UmamusumeDirectory = File.ReadAllText(pathTextFile).Trim();
 
+            List<DataDirectory> dataDirectories = UmaDataHelper.ScanDirectories();
+            if (dataDirectories.Count > 1)
+            {
+                InstallationSelectForm installationSelectForm = new(dataDirectories);
+                DialogResult installationSelectResult = installationSelectForm.ShowDialog();
+
+                if (installationSelectResult == DialogResult.OK)
+                {
+                    UmaDataHelper.UmamusumeDirectory = installationSelectForm.Path;
+                }
+                else
+                {
+                    Environment.Exit(1);
+                    return;
+                }    
+            }
+            else
+            {
+                UmaDataHelper.UmamusumeDirectory = dataDirectories.First().DataDirectoryPath;
+            }
+
             if (!UmaDataHelper.CheckDirectory())
             {
                 DialogResult result = MessageBox.Show(
-                    "Unable to find the required files in the default data directory.\n" +
-                    "If you have not installed, launched, or updated the game, please do so.\n\n" +
-                    "Otherwise, you must specify the directory if you have changed the installation location.\n\n" +
+                    "Unable to find the required files in the default known directories.\n\n" +
+                    "If you have not installed, launched, or updated the game, please do so. " +
+                    "Otherwise, please manually specify the data directory.\n\n" +
                     "Would you like to continue?",
                     "Missing files",
                     MessageBoxButtons.YesNo,
