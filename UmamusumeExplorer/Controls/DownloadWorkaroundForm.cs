@@ -11,11 +11,8 @@ namespace UmamusumeExplorer.Controls
     {
         private const string key = "9c2bab97bcf8c0c4f1a9ea7881a213f6c9ebf9d8d4c6a8e43ce5a259bde7e9fd";
 
-        private static readonly string localLow = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "Low");
-        private static string umaMusumeDirectory = Path.Combine(localLow, "Cygames", "umamusume");
         private static bool isMetaFileEncrypted = false;
-        private static readonly string dataDirectory = Path.Combine(umaMusumeDirectory, "dat");
-        private static readonly string metaFile = Path.Combine(umaMusumeDirectory, "meta");
+        private static readonly string metaFile = UmaDataHelper.MetaFile;
         private static readonly string metaFileBackup = metaFile + ".bak";
 
         private readonly List<ManifestEntry> liveAudioEntries = [.. UmaDataHelper.GetManifestEntries(e => e.Name.StartsWith("sound/l/"))];
@@ -26,6 +23,7 @@ namespace UmamusumeExplorer.Controls
 
             BinaryReader reader = new(File.OpenRead(metaFile));
             isMetaFileEncrypted = reader.ReadUInt32() != 0x694C5153;
+            reader.Dispose();
 
             Task.Run(() =>
             {
@@ -71,10 +69,10 @@ namespace UmamusumeExplorer.Controls
         {
             StringBuilder sizeString = new();
 
-            string[] units = new string[]
-            {
+            string[] units =
+            [
                 "B", "KB", "MB", "GB"
-            };
+            ];
 
             int unitIndex = (int)Math.Floor(Math.Log(length, 10) / 3);
             unitIndex = unitIndex >= 0 ? unitIndex : 0;
