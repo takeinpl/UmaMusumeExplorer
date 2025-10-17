@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace UmamsumeData
+namespace UmamusumeData
 {
     [Table("a")]
     public class ManifestEntry

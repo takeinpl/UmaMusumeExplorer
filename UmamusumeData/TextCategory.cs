@@ -1,4 +1,4 @@
-﻿namespace UmamsumeData
+﻿namespace UmamusumeData
 {
     public enum TextCategory
     {

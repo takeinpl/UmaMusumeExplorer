@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Xml.Linq;
-using UmamsumeData;
-using UmamsumeData.Tables;
+using UmamusumeData;
+using UmamusumeData.Tables;
 
 namespace UmamusumeExplorer.Assets
 {

@@ -1,6 +1,6 @@
 using SQLite;
 
-namespace UmamsumeData.Tables
+namespace UmamusumeData.Tables
 {
     [Table("support_card_data")]
     public class SupportCardData

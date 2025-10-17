@@ -1,6 +1,6 @@
 using SQLite;
 
-namespace UmamsumeData.Tables
+namespace UmamusumeData.Tables
 {
     [Table("available_skill_set")]
     public class AvailableSkillSet

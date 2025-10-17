@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UmamsumeData.Tables;
+using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
 using UmamusumeExplorer.Controls;
 

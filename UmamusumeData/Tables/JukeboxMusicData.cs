@@ -1,6 +1,6 @@
 using SQLite;
 
-namespace UmamsumeData.Tables
+namespace UmamusumeData.Tables
 {
     [Table("jukebox_music_data")]
     public class JukeboxMusicData

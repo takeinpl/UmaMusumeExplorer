@@ -1,6 +1,6 @@
 ﻿using System.Data;
-using UmamsumeData;
-using UmamsumeData.Tables;
+using UmamusumeData;
+using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
 using Color = System.Drawing.Color;
 

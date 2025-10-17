@@ -1,6 +1,6 @@
 using SQLite;
 
-namespace UmamsumeData.Tables
+namespace UmamusumeData.Tables
 {
     [Table("skill_upgrade_condition")]
     public class SkillUpgradeCondition

@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
-using UmamsumeData.Tables;
-using UmamsumeData;
+using UmamusumeData.Tables;
+using UmamusumeData;
 using NAudio.Wave;
 using NAudio.CoreAudioApi;
 using System;

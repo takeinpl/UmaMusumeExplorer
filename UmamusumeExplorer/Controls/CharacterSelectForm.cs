@@ -1,5 +1,5 @@
 ﻿using System.Net.Security;
-using UmamsumeData.Tables;
+using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
 using UmamusumeExplorer.Music.Live;
 using Color = System.Drawing.Color;

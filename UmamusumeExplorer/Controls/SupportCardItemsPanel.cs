@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UmamsumeData;
-using UmamsumeData.Tables;
+using UmamusumeData;
+using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
 using UmamusumeExplorer.Controls;
 

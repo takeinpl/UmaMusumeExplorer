@@ -1,4 +1,4 @@
-﻿using UmamsumeData.Tables;
+﻿using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
 using UmamusumeExplorer.Controls;
 

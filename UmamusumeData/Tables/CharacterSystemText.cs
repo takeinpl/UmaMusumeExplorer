@@ -1,6 +1,6 @@
 using SQLite;
 
-namespace UmamsumeData.Tables
+namespace UmamusumeData.Tables
 {
     [Table("character_system_text")]
     public class CharacterSystemText

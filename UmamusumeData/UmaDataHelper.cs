@@ -1,7 +1,7 @@
 ﻿using SQLite;
 using UmamusumeData.DataDirectories;
 
-namespace UmamsumeData
+namespace UmamusumeData
 {
     public static class UmaDataHelper
     {

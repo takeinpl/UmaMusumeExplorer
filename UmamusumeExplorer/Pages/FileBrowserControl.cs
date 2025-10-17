@@ -2,7 +2,7 @@
 using System.Data;
 using System.Diagnostics;
 using System.Text;
-using UmamsumeData;
+using UmamusumeData;
 using UmamusumeExplorer.Assets;
 
 namespace UmamusumeExplorer.Pages

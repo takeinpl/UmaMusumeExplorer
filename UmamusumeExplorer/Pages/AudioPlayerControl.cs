@@ -2,7 +2,7 @@
 using NAudio.Wave.SampleProviders;
 using System.ComponentModel;
 using System.Data;
-using UmamsumeData;
+using UmamusumeData;
 using UmamusumeAudio;
 using UmamusumeExplorer.Assets;
 using UmamusumeExplorer.Controls;

@@ -1,8 +1,8 @@
 ﻿using AssetsTools.NET;
 using AssetsTools.NET.Extra;
 using CriWareLibrary;
-using UmamsumeData;
-using UmamsumeData.Tables;
+using UmamusumeData;
+using UmamusumeData.Tables;
 using UmamusumeAudio;
 using UmamusumeExplorer.Controls;
 using UmamusumeExplorer.Utility;

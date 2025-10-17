@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using UmamsumeData;
+using UmamusumeData;
 using Image = SixLabors.ImageSharp.Image;
 
 namespace UmamusumeExplorer.Assets

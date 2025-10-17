@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UmamsumeData
+namespace UmamusumeData
 {
     public enum ManifestEntryKind : byte
     {

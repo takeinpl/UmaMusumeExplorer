@@ -1,7 +1,7 @@
 ﻿using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
-using UmamsumeData;
-using UmamsumeData.Tables;
+using UmamusumeData;
+using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
 using Color = System.Drawing.Color;
 using Point = System.Drawing.Point;

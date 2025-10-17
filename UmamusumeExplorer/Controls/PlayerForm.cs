@@ -1,7 +1,7 @@
 ﻿using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using System.Text;
-using UmamsumeData;
+using UmamusumeData;
 using UmamusumeExplorer.Assets;
 using UmamusumeExplorer.Music;
 using UmamusumeExplorer.Music.Live;

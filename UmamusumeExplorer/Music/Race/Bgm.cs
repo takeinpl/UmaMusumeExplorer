@@ -1,6 +1,6 @@
 ﻿using CriWareLibrary;
 using UmamusumeAudio;
-using UmamsumeData;
+using UmamusumeData;
 
 namespace UmamusumeExplorer.Music.Race
 {

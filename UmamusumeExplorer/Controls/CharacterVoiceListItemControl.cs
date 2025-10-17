@@ -1,8 +1,8 @@
 ﻿using CriWareLibrary;
 using NAudio.Wave;
 using UmamusumeAudio;
-using UmamsumeData;
-using UmamsumeData.Tables;
+using UmamusumeData;
+using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
 using Timer = System.Windows.Forms.Timer;
 

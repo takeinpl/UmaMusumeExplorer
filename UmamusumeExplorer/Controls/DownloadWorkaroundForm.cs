@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing.Imaging;
 using System.Text;
-using UmamsumeData;
+using UmamusumeData;
 
 namespace UmamusumeExplorer.Controls
 {

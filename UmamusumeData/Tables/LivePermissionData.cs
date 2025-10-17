@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace UmamsumeData.Tables
+namespace UmamusumeData.Tables
 {
     [Table("live_permission_data")]
     public class LivePermissionData

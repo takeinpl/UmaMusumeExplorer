@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using UmamsumeData.Tables;
+using UmamusumeData.Tables;
 
 namespace UmamusumeExplorer.Controls
 {

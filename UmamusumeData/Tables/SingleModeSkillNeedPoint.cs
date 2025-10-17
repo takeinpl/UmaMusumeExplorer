@@ -1,6 +1,6 @@
 using SQLite;
 
-namespace UmamsumeData.Tables
+namespace UmamusumeData.Tables
 {
     [Table("single_mode_skill_need_point")]
     public class SingleModeSkillNeedPoint

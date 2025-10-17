@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace UmamsumeData.Tables
+namespace UmamusumeData.Tables
 {
     [Table("chara_data")]
     public class CharaData
