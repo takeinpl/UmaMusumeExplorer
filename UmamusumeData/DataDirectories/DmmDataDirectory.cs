@@ -19,6 +19,8 @@ namespace UmamusumeData.DataDirectories
 
         public override bool Exists()
         {
+            if (!File.Exists(dmmConfigPath)) return false;
+
             string configJson = File.ReadAllText(dmmConfigPath);
 
             JsonNode? json = JsonNode.Parse(configJson);
