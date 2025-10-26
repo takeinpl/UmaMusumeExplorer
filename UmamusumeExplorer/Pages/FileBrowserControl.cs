@@ -96,6 +96,9 @@ namespace UmamusumeExplorer.Pages
                         node.ImageIndex = 1;
                         node.SelectedImageIndex = 1;
                         node.Tag = file;
+
+                        if (string.IsNullOrEmpty(UmaDataHelper.GetPath(file)))
+                            node.ForeColor = Color.Red;
                     }
                 }
             }
