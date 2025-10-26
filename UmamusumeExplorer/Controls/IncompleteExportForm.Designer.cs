@@ -100,7 +100,6 @@
 
         private Label exportFailedLabel;
         private ListView failedFilesList;
-        private Button retryButton;
         private ColumnHeader nameHeader;
         private ColumnHeader reasonHeader;
         private Button okButton;
