@@ -9,6 +9,7 @@ using UmamusumeExplorer.Utility;
 using UmamusumeExplorer.Assets;
 using UmamusumeExplorer.Music.Live;
 using UmamusumeExplorer.Music.SampleProviders;
+using System.Text;
 
 namespace UmamusumeExplorer.Music
 {
@@ -79,12 +80,23 @@ namespace UmamusumeExplorer.Music
             // Add AWB files for the selected characters
             AwbReader[] charaAwbs = new AwbReader[singingMembers];
 
+            List<int> missingCharas = [];
+
             // Get character parts
             foreach (var characterPosition in CharacterPositions)
             {
                 AwbReader? charaAwb = GetAwbFile(audioAssetEntries.First(aa => aa.BaseName == $"snd_bgm_live_{musicId}_chara_{characterPosition.CharacterId}_01.awb"));
-                if (charaAwb is null) return ShowMissingResources(2);
+                if (charaAwb is null)
+                {
+                    missingCharas.Add(characterPosition.CharacterId);
+                    continue;
+                }
                 charaAwbs[characterPosition.Position] = charaAwb;
+            }
+
+            if (missingCharas.Count > 0)
+            {
+                return ShowMissingResources(2, missingCharas);
             }
 
             // Initialize song mixer on first playback
@@ -258,9 +270,9 @@ namespace UmamusumeExplorer.Music
                 return new AwbReader(File.OpenRead(path));
         }
 
-        private static bool ShowMissingResources(int what)
+        private static bool ShowMissingResources(int what, List<int>? missingCharas = null)
         {
-            string missing = "";
+            string missing;
             switch (what)
             {
                 case 0:
@@ -269,14 +281,28 @@ namespace UmamusumeExplorer.Music
                 case 1:
                     missing = "background music";
                     break;
-                case 2:
-                    missing = "character voice";
-                    break;
                 default:
                     missing = "resources";
                     break;
             }
-            MessageBox.Show($"Missing {missing} resource for selected music. Please download all resources in the game.", "Missing resources", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (what == 2)
+            {
+                StringBuilder namesBuilder = new();
+                if (missingCharas is not null)
+                {
+                    foreach (var item in missingCharas)
+                    {
+                        namesBuilder.AppendLine(TextHelpers.GetCharaName(item, true, true));
+                    }
+                }
+
+                MessageBox.Show($"Selected music is missing voice resources for the following characters:\n\n{namesBuilder.ToString()}\nPlease download all resources in the game.",
+                                "Missing resources",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+            }
+            else
+                MessageBox.Show($"Missing {missing} resource for selected music. Please download all resources in the game.", "Missing resources", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
         }
     }
