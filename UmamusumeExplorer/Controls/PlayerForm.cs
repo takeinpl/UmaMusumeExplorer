@@ -146,14 +146,15 @@ namespace UmamusumeExplorer.Controls
 
         private void PlayerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            songJacketPinnedBitmap?.Dispose();
             playbackFinished = true;
+            lyricsThread?.Join();
+            voicesThread?.Join();
+
+            songJacketPinnedBitmap?.Dispose();
 
             waveOut.Stop();
             waveOut.Dispose();
-
-            lyricsThread?.Join();
-            voicesThread?.Join();
+            songMixer?.Dispose();
         }
 
         private void SeekTrackBar_Scroll(object sender, EventArgs e)
@@ -178,9 +179,6 @@ namespace UmamusumeExplorer.Controls
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            waveOut.Stop();
-            waveOut.Dispose();
-            songMixer?.Dispose();
             Close();
         }
 
@@ -383,9 +381,10 @@ namespace UmamusumeExplorer.Controls
                         else break;
                     }
 
+                    string lyrics = lyricsTriggers[lyricsTriggerIndex - 1].Lyrics;
                     BeginInvoke(() =>
                     {
-                        lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex - 1].Lyrics;
+                        lyricsLabel.Text = lyrics;
                     });
 
                     seeked = false;
@@ -394,9 +393,10 @@ namespace UmamusumeExplorer.Controls
                 {
                     while (msElapsed >= lyricsTriggers[lyricsTriggerIndex].TimeMs)
                     {
+                        string lyrics = lyricsTriggers[lyricsTriggerIndex].Lyrics;
                         BeginInvoke(() =>
                         {
-                            lyricsLabel.Text = lyricsTriggers[lyricsTriggerIndex].Lyrics;
+                            lyricsLabel.Text = lyrics;
                         });
 
                         if (lyricsTriggerIndex < lyricsTriggers.Count - 1)
