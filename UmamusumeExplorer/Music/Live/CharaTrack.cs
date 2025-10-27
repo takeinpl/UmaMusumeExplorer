@@ -154,6 +154,8 @@ namespace UmamusumeExplorer.Music.Live
                 {
                     int index = i * WaveFormat.Channels + j;
 
+                    if (index >= buffer.Length || index >= targetBuffer?.Length) break;
+
                     if (ForceSing)
                     {
                         buffer[index] = mainBuffer[index];
