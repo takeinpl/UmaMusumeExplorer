@@ -1,7 +1,6 @@
 ﻿using UmamusumeData;
 using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
-using UmamusumeExplorer.Controls;
 using UmamusumeExplorer.Music;
 
 namespace UmamusumeExplorer.Controls

@@ -18,31 +18,31 @@ namespace UmamusumeExplorer.Controls
             switch (rarity)
             {
                 case SkillBackground.Rarity2:
-                    colors = new[]
-                    {
+                    colors =
+                    [
                         Color.LightYellow,
                         Color.Gold
-                    };
+                    ];
                     backgroundBrush = new SolidBrush(Color.Gold);
                     break;
                 case SkillBackground.Rarity3:
                 case SkillBackground.Rarity4:
                 case SkillBackground.Rarity5:
-                    colors = new[] {
+                    colors = [
                         Color.LightGreen,
                         Color.DeepSkyBlue,
                         Color.BlueViolet,
                         Color.DeepPink
-                    };
-                    positions = new[] { 0F, 1 / 3F, 2 / 3F, 1F };
+                    ];
+                    positions = [0F, 1 / 3F, 2 / 3F, 1F];
                     duplicateBackground = true;
                     break;
                 case SkillBackground.Evolution:
-                    colors = new[]
-                    {
+                    colors =
+                    [
                         Color.Pink,
                         Color.HotPink
-                    };
+                    ];
                     backgroundBrush = new SolidBrush(Color.HotPink);
                     break;
                 default:
@@ -50,10 +50,11 @@ namespace UmamusumeExplorer.Controls
             }
 
             LinearGradientBrush linearGradientBrush = new(colorBounds, Color.White, Color.White, LinearGradientMode.Horizontal);
-
-            ColorBlend colorBlend = new();
-            colorBlend.Positions = positions;
-            colorBlend.Colors = colors;
+            ColorBlend colorBlend = new()
+            {
+                Positions = positions,
+                Colors = colors
+            };
             linearGradientBrush.InterpolationColors = colorBlend;
 
             if (duplicateBackground)

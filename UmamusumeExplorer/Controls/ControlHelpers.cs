@@ -39,8 +39,8 @@
             int left = parentForm.Left;
             int top = parentForm.Top;
 
-            left += (parentForm.Width / 2) - (form.Width / 2);
-            top += (parentForm.Height / 2) - (form.Height / 2);
+            left += parentForm.Width / 2 - form.Width / 2;
+            top += parentForm.Height / 2 - form.Height / 2;
 
             form.Left = left;
             form.Top = top;
