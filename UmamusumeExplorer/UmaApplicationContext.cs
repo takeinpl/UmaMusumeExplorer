@@ -13,26 +13,28 @@ namespace UmamusumeExplorer
         {
             if (File.Exists(pathTextFile))
                 UmaDataHelper.UmamusumeDirectory = File.ReadAllText(pathTextFile).Trim();
-
-            List<DataDirectory> dataDirectories = UmaDataHelper.ScanDirectories();
-            if (dataDirectories.Count > 1)
+            else
             {
-                InstallationSelectForm installationSelectForm = new(dataDirectories);
-                DialogResult installationSelectResult = installationSelectForm.ShowDialog();
-
-                if (installationSelectResult == DialogResult.OK)
+                List<DataDirectory> dataDirectories = UmaDataHelper.ScanDirectories();
+                if (dataDirectories.Count > 1)
                 {
-                    UmaDataHelper.UmamusumeDirectory = installationSelectForm.Path;
+                    InstallationSelectForm installationSelectForm = new(dataDirectories);
+                    DialogResult installationSelectResult = installationSelectForm.ShowDialog();
+
+                    if (installationSelectResult == DialogResult.OK)
+                    {
+                        UmaDataHelper.UmamusumeDirectory = installationSelectForm.Path;
+                    }
+                    else
+                    {
+                        Environment.Exit(1);
+                        return;
+                    }
                 }
                 else
                 {
-                    Environment.Exit(1);
-                    return;
-                }    
-            }
-            else
-            {
-                UmaDataHelper.UmamusumeDirectory = dataDirectories.First().DataDirectoryPath;
+                    UmaDataHelper.UmamusumeDirectory = dataDirectories.First().DataDirectoryPath;
+                }
             }
 
             if (!UmaDataHelper.CheckDirectory())
