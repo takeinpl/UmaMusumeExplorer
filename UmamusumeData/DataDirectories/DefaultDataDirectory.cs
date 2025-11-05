@@ -3,18 +3,30 @@
     internal class DefaultDataDirectory : DataDirectory
     {
         private static readonly string appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        private static readonly string dataDirectory = Path.Combine(appData + "Low", "Cygames", "umamusume");
+        private static readonly string cygamesDirectory = Path.Combine(appData + "Low", "Cygames");
+        private static readonly string umamusumeDirectory = Path.Combine(cygamesDirectory, "umamusume");
+        private static readonly string umamusumeJpnDirectory = Path.Combine(cygamesDirectory, "UmamusumePrettyDerby_Jpn");
 
         public override string Name => "Default (AppData)";
 
         public override bool Exists()
         {
-            bool exists = CheckDirectory(dataDirectory);
+            string[] dataDirectories =
+            {
+                umamusumeDirectory,
+                umamusumeJpnDirectory
+            };
 
-            if (exists)
-                DataDirectoryPath = dataDirectory;
+            foreach (var dataDirectory in dataDirectories)
+            {
+                if (CheckDirectory(dataDirectory))
+                {
+                    DataDirectoryPath = dataDirectory;
+                    return true;
+                }
+            }
 
-            return exists;
+            return false;
         }
     }
 }
