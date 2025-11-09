@@ -10,7 +10,7 @@
 
         public override bool Exists()
         {
-           if (CheckDirectory())
+           if (CheckDirectory(dataDirectory))
             {
                 DataDirectoryPath = dataDirectory;
                 return true;
