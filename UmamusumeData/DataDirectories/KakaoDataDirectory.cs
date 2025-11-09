@@ -2,7 +2,7 @@
 {
     internal class KakaoDataDirectory : DataDirectory
     {
-        private static readonly string kakaogamesDirectory = "C:\kakaogames";
+        private static readonly string kakaogamesDirectory = "C:\\kakaogames";
         private static readonly string umamusumeDirectory = Path.Combine(kakaogamesDirectory, "umamusume");
         private static readonly string dataDirectory = Path.Combine(umamusumeDirectory, "client", "Assets");
 
