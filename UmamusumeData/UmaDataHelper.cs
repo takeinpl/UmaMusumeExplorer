@@ -11,7 +11,8 @@ namespace UmamusumeData
         [
             new DefaultDataDirectory(),
             new DmmDataDirectory(),
-            new SteamJapanDataDirectory()
+            new SteamJapanDataDirectory(),
+            new KakaoDataDirectory()
         ];
 
         private static bool isMetaFileEncrypted = false;
