@@ -155,7 +155,7 @@ namespace UmamusumeExplorer
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(tabControl);
             Name = "MainForm";
             FormClosing += MainForm_FormClosing;
