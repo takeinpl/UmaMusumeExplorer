@@ -215,22 +215,13 @@ namespace UmamusumeExplorer.Music.Live
                 return waveStream.ToSampleProvider();
         }
 
-        private struct Trigger
+        private struct Trigger(long sample, int track, float volume, float pan, float volumeRate)
         {
-            public long Sample;
-            public int Track;
-            public float Volume;
-            public float Pan;
-            public float VolumeRate;
-
-            public Trigger(long sample, int track, float volume, float pan, float volumeRate)
-            {
-                Sample = sample;
-                Track = track;
-                Volume = volume;
-                Pan = pan;
-                VolumeRate = volumeRate;
-            }
+            public long Sample = sample;
+            public int Track = track;
+            public float Volume = volume;
+            public float Pan = pan;
+            public float VolumeRate = volumeRate;
         }
     }
 }
