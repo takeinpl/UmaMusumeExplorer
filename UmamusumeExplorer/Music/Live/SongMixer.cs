@@ -11,9 +11,9 @@ namespace UmamusumeExplorer.Music.Live
         private UmaWaveStream okeWaveStream;
         private ISampleProvider okeSampleProvider;
         private readonly List<PartTrigger> partTriggers;
-        private readonly List<VolumeTrigger> volumeTriggers = new();
+        private readonly List<VolumeTrigger> volumeTriggers = [];
         private UmaWaveStream? voiceOverWaveStream;
-        private ISampleProvider? voiceOverSampleProvider;
+        private OffsetSampleProvider? voiceOverSampleProvider;
         private int voiceTrigger;
 
         private readonly object readLock = new();
@@ -86,7 +86,7 @@ namespace UmamusumeExplorer.Music.Live
                     {
                         charaTrack.Position = value;
                     }
-                    currentSample = okeWaveStream.Position / okeWaveStream.WaveFormat.Channels / (okeWaveStream.WaveFormat.BitsPerSample / 8);
+                    currentSample = AudioUtility.BytesToSamples(okeWaveStream.Position, okeWaveStream.WaveFormat);
                     volumeTriggerIndex = 0;
 
                     AdjustVoiceOverPosition();
@@ -250,15 +250,17 @@ namespace UmamusumeExplorer.Music.Live
             }
             else
             {
-                voiceOverWaveStream.Position = Math.Min((currentSample - voiceTrigger)
-                    * voiceOverWaveStream.WaveFormat.Channels
-                    * (voiceOverWaveStream.WaveFormat.BitsPerSample / 8),
+                voiceOverWaveStream.Position = Math.Min(
+                    AudioUtility.SamplesToBytes(currentSample - voiceTrigger, voiceOverWaveStream.WaveFormat),
                     voiceOverWaveStream.Length);
             }
 
             voiceOverSampleProvider = new OffsetSampleProvider(voiceOverWaveStream.ToSampleProvider())
             {
-                DelayBySamples = (int)newTrigger * WaveFormat.Channels
+                DelayBySamples = (int)newTrigger * WaveFormat.Channels,
+                LeadOutSamples = (int)AudioUtility.BytesToSamples(
+                    okeWaveStream.Length - voiceOverWaveStream.Length,
+                    voiceOverWaveStream.WaveFormat)
             };
         }
 

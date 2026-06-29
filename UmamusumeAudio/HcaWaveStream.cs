@@ -1,5 +1,6 @@
 ﻿using ClHcaSharp;
 using NAudio.Wave;
+using System.Diagnostics;
 
 namespace UmamusumeAudio
 {
@@ -15,6 +16,7 @@ namespace UmamusumeAudio
         private readonly short[][] sampleBuffer;
 
         private long samplePosition;
+        private long sampleBufferIndex;
 
         public HcaWaveStream(Stream hcaFile, ulong key)
         {
@@ -88,13 +90,15 @@ namespace UmamusumeAudio
                     }
                     else if (Position >= Length) break;
 
-                    if (samplePosition % info.SamplesPerBlock == 0) FillBuffer(samplePosition);
+                    sampleBufferIndex = samplePosition % info.SamplesPerBlock;
+
+                    if (sampleBufferIndex == 0) FillBuffer(samplePosition);
 
                     for (int j = 0; j < info.ChannelCount; j++)
                     {
                         int bufferOffset = (i * info.ChannelCount + j) * sizeof(short);
-                        buffer[offset + bufferOffset] = (byte)sampleBuffer[j][samplePosition % info.SamplesPerBlock];
-                        buffer[offset + bufferOffset + 1] = (byte)(sampleBuffer[j][samplePosition % info.SamplesPerBlock] >> 8);
+                        buffer[offset + bufferOffset] = (byte)sampleBuffer[j][sampleBufferIndex];
+                        buffer[offset + bufferOffset + 1] = (byte)(sampleBuffer[j][sampleBufferIndex] >> 8);
 
                         read += sizeof(short);
                     }
@@ -128,15 +132,22 @@ namespace UmamusumeAudio
                 byte[] blockBytes = hcaFileReader.ReadBytes(info.BlockSize);
                 if (blockBytes.Length > 0)
                 {
-                    //try
-                    //{
-                    decoder.DecodeBlock(blockBytes);
-                    decoder.ReadSamples16(sampleBuffer);
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Debug.WriteLine("HCA decoder threw an exception: " + e.Message);
-                    //}
+                    try
+                    {
+                        decoder.DecodeBlock(blockBytes);
+                        decoder.ReadSamples16(sampleBuffer);
+                    }
+                    catch (HcaException e)
+                    {
+                        for (int c = 0; c < info.ChannelCount; c++)
+                        {
+                            for (int i = 0; i < info.SamplesPerBlock; i++)
+                            {
+                                sampleBuffer[c][i] = 0;
+                            }
+                        }
+                        Debug.WriteLine("HCA decoder threw an exception: " + e.GetType().Name);
+                    }
                 }
             }
         }
@@ -147,28 +158,5 @@ namespace UmamusumeAudio
 
             base.Dispose(disposing);
         }
-
-        //private void FillBuffer()
-        //{
-        //    if (hcaFileStream.Position >= hcaFileStream.Length)
-        //        hcaFileStream.Position = dataStart;
-
-        //    byte[] blockBytes = hcaFileReader.ReadBytes(info.BlockSize);
-        //    if (blockBytes.Length > 0)
-        //    {
-        //        decoder.DecodeBlock(blockBytes);
-        //        decoder.ReadSamples16(sampleBuffer);
-        //    }
-        //    else
-        //    {
-        //        for (int i = 0; i < sampleBuffer.Length; i++)
-        //        {
-        //            for (int j = 0; j < sampleBuffer[i].Length; j++)
-        //            {
-        //                sampleBuffer[i][j] = 0;
-        //            }
-        //        }
-        //    }
-        //}
     }
 }
