@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UmamusumeExplorer.Music.Live
+namespace UmamusumeExplorer.Audio.Live
 {
     internal enum TrackMode
     {

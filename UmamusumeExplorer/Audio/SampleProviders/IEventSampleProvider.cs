@@ -1,6 +1,6 @@
 ﻿using NAudio.Wave;
 
-namespace UmamusumeExplorer.Music.SampleProviders
+namespace UmamusumeExplorer.Audio.SampleProviders
 {
     // Sample provider interface that uses events to signal the end of sample modification (fades, delays, etc.)
     interface IEventSampleProvider : ISampleProvider

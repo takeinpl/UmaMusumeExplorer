@@ -90,12 +90,12 @@ namespace UmamusumeExplorer.Controls
         {
             if (items is null) return;
 
-            List<Control> controls = new();
+            List<Control> controls = [];
             int itemNumber = 0;
             foreach (var item in items)
             {
                 Control? control = null;
-                if (ProcessItem(item, ref control) && (Filter?.Invoke(item) ?? true) && control is not null)
+                if ((Filter?.Invoke(item) ?? true) && ProcessItem(item, ref control) && control is not null)
                 {
                     control.Click += ItemClick;
                     controls.Add(control);

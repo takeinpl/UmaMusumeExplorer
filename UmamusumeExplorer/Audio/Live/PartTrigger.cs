@@ -1,7 +1,11 @@
-﻿namespace UmamusumeExplorer.Music.Live
+﻿using System.Globalization;
+
+namespace UmamusumeExplorer.Audio.Live
 {
     class PartTrigger
     {
+        private static readonly NumberFormatInfo numberFormat = NumberFormatInfo.InvariantInfo;
+
         public int TimeMs { get; }
 
         public int[] MemberTracks { get; }
@@ -43,11 +47,11 @@
             {
                 for (int i = 0; i < activeMembers; i++)
                 {
-                    MemberVolumes[PositionToIndex(i, pivot)] = float.Parse(columns[currentIndex++]);
+                    MemberVolumes[PositionToIndex(i, pivot)] = float.Parse(columns[currentIndex++], numberFormat);
                 }
                 for (int i = 0; i < activeMembers; i++)
                 {
-                    MemberPans[PositionToIndex(i, pivot)] = float.Parse(columns[currentIndex++]);
+                    MemberPans[PositionToIndex(i, pivot)] = float.Parse(columns[currentIndex++], numberFormat);
                 }
             }
             else
@@ -60,7 +64,7 @@
             }
 
             if (hasVolumeRate)
-                VolumeRate = float.Parse(columns[currentIndex++]);
+                VolumeRate = float.Parse(columns[currentIndex++], numberFormat);
             else
                 VolumeRate = 999F;
         }

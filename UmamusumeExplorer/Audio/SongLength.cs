@@ -1,4 +1,4 @@
-﻿namespace UmamusumeExplorer.Music
+﻿namespace UmamusumeExplorer.Audio
 {
     public enum SongLength
     {

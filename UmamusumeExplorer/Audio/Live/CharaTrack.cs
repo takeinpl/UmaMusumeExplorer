@@ -2,9 +2,9 @@
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using UmamusumeAudio;
-using UmamusumeExplorer.Music.SampleProviders;
+using UmamusumeExplorer.Audio.SampleProviders;
 
-namespace UmamusumeExplorer.Music.Live
+namespace UmamusumeExplorer.Audio.Live
 {
     class CharaTrack : ISampleProvider, IDisposable
     {

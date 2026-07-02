@@ -1,7 +1,7 @@
 ﻿using System.Net.Security;
 using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
-using UmamusumeExplorer.Music.Live;
+using UmamusumeExplorer.Audio.Live;
 using Color = System.Drawing.Color;
 
 namespace UmamusumeExplorer.Controls

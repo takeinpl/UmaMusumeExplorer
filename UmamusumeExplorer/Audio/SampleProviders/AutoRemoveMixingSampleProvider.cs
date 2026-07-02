@@ -2,7 +2,7 @@
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
-namespace UmamusumeExplorer.Music.SampleProviders
+namespace UmamusumeExplorer.Audio.SampleProviders
 {
     // Modified MixingSampleProvider from NAudio that removes an input when an event triggers.
     class AutoRemoveMixingSampleProvider : ISampleProvider

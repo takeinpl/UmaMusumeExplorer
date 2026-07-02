@@ -1,6 +1,6 @@
 ﻿using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
-using UmamusumeExplorer.Music;
+using UmamusumeExplorer.Audio;
 
 namespace UmamusumeExplorer.Pages
 {

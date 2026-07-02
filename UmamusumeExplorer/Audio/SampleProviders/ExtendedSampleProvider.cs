@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UmamusumeExplorer.Music.SampleProviders
+namespace UmamusumeExplorer.Audio.SampleProviders
 {
     internal class ExtendedSampleProvider : IExtendedSampleProvider
     {

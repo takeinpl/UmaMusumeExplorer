@@ -15,13 +15,18 @@ namespace UmamusumeExplorer.Controls
     public partial class SupportCardsControl : UserControl
     {
         private readonly IEnumerable<SupportCardData> supportCardDatas = AssetTables.SupportCardDatas;
+        private readonly IEnumerable<SupportCardGroup> supportCardGroups = AssetTables.SupportCardGroups;
 
         public SupportCardsControl()
         {
             InitializeComponent();
 
             supportCardItemsPanel.Indeterminate = true;
-            supportCardItemsPanel.Filter = (item) => item.CharaId == CharaId;
+            supportCardItemsPanel.Filter = (item) =>
+            {
+                return item.CharaId == CharaId
+                       || supportCardGroups.FirstOrDefault(scg => scg.SupportCardId == item.Id && scg.CharaId == CharaId) is not null;
+            };
         }
 
         public int CharaId { get; set; }

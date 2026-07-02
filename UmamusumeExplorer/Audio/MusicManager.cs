@@ -7,11 +7,11 @@ using UmamusumeAudio;
 using UmamusumeExplorer.Controls;
 using UmamusumeExplorer.Utility;
 using UmamusumeExplorer.Assets;
-using UmamusumeExplorer.Music.Live;
-using UmamusumeExplorer.Music.SampleProviders;
 using System.Text;
+using UmamusumeExplorer.Audio.Live;
+using UmamusumeExplorer.Audio.SampleProviders;
 
-namespace UmamusumeExplorer.Music
+namespace UmamusumeExplorer.Audio
 {
     internal class MusicManager
     {

@@ -76,6 +76,7 @@ namespace UmamusumeExplorer.Assets
         public static List<SkillUpgradeDescription> SkillUpgradeDescriptions { get; private set; } = [];
 
         public static List<SupportCardData> SupportCardDatas { get; private set; } = [];
+        public static List<SupportCardGroup> SupportCardGroups { get; private set; } = [];
 
         public static List<TextData> TextDatas { get; private set; } = [];
 

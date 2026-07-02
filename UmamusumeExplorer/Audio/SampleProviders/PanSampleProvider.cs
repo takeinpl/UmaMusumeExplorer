@@ -1,6 +1,6 @@
 ﻿using NAudio.Wave;
 
-namespace UmamusumeExplorer.Music.SampleProviders
+namespace UmamusumeExplorer.Audio.SampleProviders
 {
     class PanSampleProvider : ISampleProvider
     {

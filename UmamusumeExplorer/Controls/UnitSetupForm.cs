@@ -1,7 +1,7 @@
 ﻿using UmamusumeData;
 using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
-using UmamusumeExplorer.Music.Live;
+using UmamusumeExplorer.Audio.Live;
 using UmamusumeExplorer.Utility;
 
 namespace UmamusumeExplorer.Controls

@@ -1,4 +1,4 @@
-﻿namespace UmamusumeExplorer.Music.Race
+﻿namespace UmamusumeExplorer.Audio.Race
 {
     internal class Pattern
     {

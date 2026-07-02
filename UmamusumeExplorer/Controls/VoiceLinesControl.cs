@@ -8,6 +8,8 @@ namespace UmamusumeExplorer.Controls
 {
     public partial class VoiceLinesControl : UserControl
     {
+        private readonly float ratio = 264 / 240F;
+
         private readonly IEnumerable<CharacterSystemText> systemTexts = AssetTables.CharacterSystemTexts;
         private readonly IWavePlayer waveOut = new WaveOutEvent() { DesiredLatency = 250 };
         private readonly BackgroundWorker exportBackgroundWorker = new() { WorkerReportsProgress = true };
@@ -22,6 +24,8 @@ namespace UmamusumeExplorer.Controls
         public VoiceLinesControl()
         {
             InitializeComponent();
+
+            cardPictureBox.Height = (int)(cardPictureBox.Width * ratio);
 
             exportBackgroundWorker.ProgressChanged += ExportBackgroundWorker_ProgressChanged;
             exportBackgroundWorker.RunWorkerCompleted += ExportBackgroundWorker_RunWorkerCompleted;

@@ -1,8 +1,8 @@
 ﻿using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
-using UmamusumeExplorer.Music.Race;
+using UmamusumeExplorer.Audio.Race;
 
-namespace UmamusumeExplorer.Music.SampleProviders
+namespace UmamusumeExplorer.Audio.SampleProviders
 {
     internal class TestRunningBgmSampleProvider : ISampleProvider
     {

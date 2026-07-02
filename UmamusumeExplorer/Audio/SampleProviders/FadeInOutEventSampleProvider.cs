@@ -1,7 +1,7 @@
 ﻿using NAudio.Wave;
-using static UmamusumeExplorer.Music.SampleProviders.IEventSampleProvider;
+using static UmamusumeExplorer.Audio.SampleProviders.IEventSampleProvider;
 
-namespace UmamusumeExplorer.Music.SampleProviders
+namespace UmamusumeExplorer.Audio.SampleProviders
 {
     // Implementation of NAudio's FadeInOutSampleProvider that invokes an event after fading.
     class FadeInOutEventSampleProvider : IEventSampleProvider

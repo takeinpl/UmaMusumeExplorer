@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UmamusumeExplorer.Music
+namespace UmamusumeExplorer.Audio
 {
     internal static class AudioUtility
     {

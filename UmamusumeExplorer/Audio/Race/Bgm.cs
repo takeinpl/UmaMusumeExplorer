@@ -2,7 +2,7 @@
 using UmamusumeAudio;
 using UmamusumeData;
 
-namespace UmamusumeExplorer.Music.Race
+namespace UmamusumeExplorer.Audio.Race
 {
     internal class Bgm : IDisposable
     {

@@ -3,9 +3,9 @@ using NAudio.Wave.SampleProviders;
 using System.Text;
 using UmamusumeData;
 using UmamusumeExplorer.Assets;
-using UmamusumeExplorer.Music;
-using UmamusumeExplorer.Music.Live;
-using UmamusumeExplorer.Music.SampleProviders;
+using UmamusumeExplorer.Audio;
+using UmamusumeExplorer.Audio.Live;
+using UmamusumeExplorer.Audio.SampleProviders;
 using UmamusumeExplorer.Utility;
 using Color = System.Drawing.Color;
 

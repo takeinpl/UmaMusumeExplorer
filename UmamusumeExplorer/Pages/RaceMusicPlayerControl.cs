@@ -3,9 +3,9 @@ using NAudio.Wave.SampleProviders;
 using UmamusumeData;
 using UmamusumeData.Tables;
 using UmamusumeExplorer.Assets;
+using UmamusumeExplorer.Audio.Race;
+using UmamusumeExplorer.Audio.SampleProviders;
 using UmamusumeExplorer.Controls;
-using UmamusumeExplorer.Music.Race;
-using UmamusumeExplorer.Music.SampleProviders;
 
 namespace UmamusumeExplorer.Pages
 {
