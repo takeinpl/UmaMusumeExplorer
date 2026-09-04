@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace UmamusumeData
 {
-    public enum ManifestEntryKind : byte
+    public enum ManifestEntryKind : int
     {
-        Default = 0x0,
-        AssetManifest = 0x1,
-        PlatformManifest = 0x2,
-        RootManifest = 0x3,
-        Master = 0xA,
-        Sound = 0xB,
-        Movie = 0xC,
-        Font = 0xD
+        Default,
+        AssetManifest,
+        PlatformManifest,
+        RootManifest,
+        Master = 10,
+        Sound,
+        Movie,
+        Font
     }
 }
