@@ -16,7 +16,7 @@ namespace UmamusumeExplorer.Controls
             songItemsPanel.Indeterminate = true;
             songItemsPanel.Filter = (item) =>
             {
-                IEnumerable<LivePermissionData> livePermissionData = LivePermissionDataHelper.GetLivePermissionData(item.MusicId);
+                IEnumerable<LivePermissionData> livePermissionData = Helpers.GetLivePermissionData(item.MusicId);
                 return livePermissionData.FirstOrDefault(lpd => lpd.CharaId == CharaId) is not null;
             };
             songItemsPanel.ItemClick += (s, e) =>

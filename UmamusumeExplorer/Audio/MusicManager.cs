@@ -85,7 +85,7 @@ namespace UmamusumeExplorer.Audio
             AwbReader? voiceOverAwb = GetAwbFile(audioAssetEntries.FirstOrDefault(aa => aa.BaseName == $"snd_bgm_live_{musicId}_vo_{mainCharacterId:d4}_{announcerGender:d2}.awb"));
             voiceOverAwb ??= GetAwbFile(audioAssetEntries.FirstOrDefault(aa => aa.BaseName == $"snd_bgm_live_{musicId}_vo_{0:d4}_{announcerGender:d2}.awb"));
 
-            IEnumerable<LivePermissionData> allowedCharas = LivePermissionDataHelper.GetLivePermissionData(musicId);
+            IEnumerable<LivePermissionData> allowedCharas = Helpers.GetLivePermissionData(musicId);
             for (int i = 0; i < CharacterPositions.Length; i++)
             {
                 if (CharacterPositions[i].CharacterId == 0)
@@ -308,7 +308,7 @@ namespace UmamusumeExplorer.Audio
                 {
                     foreach (var item in missingCharas)
                     {
-                        namesBuilder.AppendLine(TextHelpers.GetCharaName(item, true, true));
+                        namesBuilder.AppendLine(Helpers.GetCharaName(item, true, true));
                     }
                 }
 
