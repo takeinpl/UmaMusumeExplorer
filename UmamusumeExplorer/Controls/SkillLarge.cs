@@ -1,5 +1,6 @@
 ﻿using UmamusumeData;
 using UmamusumeData.Tables;
+using UmamusumeData.Utility;
 using UmamusumeExplorer.Assets;
 using Color = System.Drawing.Color;
 using Rectangle = System.Drawing.Rectangle;
@@ -67,7 +68,7 @@ namespace UmamusumeExplorer.Controls
             skillNameLabel.Text = AssetTables.GetText(TextCategory.MasterSkillName, skillData.Id);
             skillDescriptionLabel.Text = AssetTables.GetText(TextCategory.MasterSkillExplain, skillData.Id)
                 .Replace("\\n", "\n");
-            iconPictureBox.BackgroundImage = GameAssets.GetSkillIcon(skillData.IconId)?.Bitmap;
+            iconPictureBox.BackgroundImage = GameAssets.GetSkillIcon(SkillHelpers.GetSkillIcon(skillData))?.Bitmap;
         }
 
         protected override void OnPaint(PaintEventArgs e)

@@ -1,5 +1,6 @@
 ﻿using UmamusumeData;
 using UmamusumeData.Tables;
+using UmamusumeData.Utility;
 using UmamusumeExplorer.Assets;
 using Color = System.Drawing.Color;
 using Rectangle = System.Drawing.Rectangle;
@@ -17,7 +18,7 @@ namespace UmamusumeExplorer.Controls
             InitializeComponent();
 
             skillNameLabel.Text = AssetTables.GetText(TextCategory.MasterSkillName, skill.Id);
-            iconPictureBox.Image = GameAssets.GetSkillIcon(skill.IconId)?.Bitmap;
+            iconPictureBox.Image = GameAssets.GetSkillIcon(SkillHelpers.GetSkillIcon(skill))?.Bitmap;
 
             Skill = skill;
 
