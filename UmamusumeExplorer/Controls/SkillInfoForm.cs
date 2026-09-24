@@ -1,7 +1,7 @@
 ﻿using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices;
 using UmamusumeData;
 using UmamusumeData.Tables;
+using UmamusumeData.Utility;
 using UmamusumeExplorer.Assets;
 using Color = System.Drawing.Color;
 using Point = System.Drawing.Point;
@@ -28,7 +28,7 @@ namespace UmamusumeExplorer.Controls
             skillNameLabel.Text = AssetTables.GetText(TextCategory.MasterSkillName, skill.Id);
             skillDescriptionLabel.Text = AssetTables.GetText(TextCategory.MasterSkillExplain, skill.Id)
                 .Replace("\\n", "\n");
-            iconPictureBox.BackgroundImage = GameAssets.GetSkillIcon(skill.IconId)?.Bitmap;
+            iconPictureBox.BackgroundImage = GameAssets.GetSkillIcon(SkillHelpers.GetSkillIcon(skill))?.Bitmap;
 
             SingleModeSkillNeedPoint? needSkillPoint = AssetTables.SingleModeSkillNeedPoints.FirstOrDefault(s => s.Id == skill.Id);
 

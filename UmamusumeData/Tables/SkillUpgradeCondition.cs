@@ -26,5 +26,4 @@ namespace UmamusumeData.Tables
         [Column("count_type"), NotNull]
         public int CountType { get; set; }
     }
-
 }

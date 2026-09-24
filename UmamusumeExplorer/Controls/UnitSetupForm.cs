@@ -17,7 +17,7 @@ namespace UmamusumeExplorer.Controls
             InitializeComponent();
 
             id = musicId;
-            livePermissionData = LivePermissionDataHelper.GetLivePermissionData(musicId);
+            livePermissionData = Helpers.GetLivePermissionData(musicId);
             characterPositions = new CharacterPosition[singingMembers];
 
             Text = AssetTables.GetText(TextCategory.MasterLiveTitle, id) + " " + Text;

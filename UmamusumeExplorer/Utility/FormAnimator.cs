@@ -10,6 +10,8 @@ namespace UmamusumeExplorer.Utility
 
         private readonly PreciseTimer timer;
 
+        private readonly object timerLock = new();
+
         private AnimationTarget target;
         private float currentProgress = 0F;
         private bool finished = true;
@@ -38,43 +40,53 @@ namespace UmamusumeExplorer.Utility
                 form.Invoke(() => form.Top = AnimateValue(recordedTop, recordedTop + expandedHeight / 2 / 4, currentProgress, Ease));
             }
 
-            if (currentProgress > 1F)
-                finished = true;
-
-            if (!finished)
-                currentProgress += timer.Interval / 500F;
-
-            if (finished)
+            lock (timerLock)
             {
-                timer.Stop();
-                currentProgress = 0F;
+                if (currentProgress > 1F)
+                    finished = true;
+
+                if (!finished)
+                    currentProgress += timer.Interval / 500F;
+
+                if (finished)
+                {
+                    timer.Stop();
+                    currentProgress = 0F;
+                }
             }
+
         }
 
         public bool Expand()
         {
-            if (!finished) return false;
+            lock (timerLock)
+            {
+                if (!finished) return false;
 
-            recordedTop = form.Top;
+                recordedTop = form.Top;
 
-            timer.Start();
-            target = AnimationTarget.Expand;
+                timer.Start();
+                target = AnimationTarget.Expand;
 
-            finished = false;
+                finished = false;
+            }
 
             return true;
         }
 
         public bool Collapse()
         {
-            if (!finished) return false;
+            lock (timerLock)
+            {
+                if (!finished) return false;
 
-            recordedTop = form.Top;
+                recordedTop = form.Top;
 
-            timer.Start();
-            target = AnimationTarget.Collapse;
+                timer.Start();
+                target = AnimationTarget.Collapse;
 
-            finished = false;
+                finished = false;
+            }
 
             return true;
         }
